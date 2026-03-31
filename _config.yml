@@ -1,0 +1,73 @@
+# =============================================
+# SITE SETTINGS — edita con tus datos reales
+# =============================================
+title: "Tu Nombre"
+tagline: "Full Stack Developer"
+description: "Desarrollo web profesional y soluciones digitales a medida para tu negocio."
+
+# URL de tu GitHub Pages
+# Si el repo se llama "pagina-personal" (no username.github.io):
+#   url: "https://tuusuario.github.io"
+#   baseurl: "/pagina-personal"
+# Si el repo se llama "tuusuario.github.io":
+#   url: "https://tuusuario.github.io"
+#   baseurl: ""
+url: "https://tuusuario.github.io"
+baseurl: "/pagina-personal"
+
+# Autor
+author:
+  name: "Tu Nombre"
+  initials: "TN"
+  email: "contacto@tudominio.com"
+  location: "Buenos Aires, Argentina"
+  bio: "Desarrollador web Full Stack con pasión por crear experiencias digitales excepcionales"
+
+# Redes sociales
+social:
+  github: "tuusuario"
+  linkedin: "tuusuario"
+  twitter: "tuusuario"
+
+# Servicios (se renderizan en la sección Servicios)
+services:
+  - title: "Desarrollo Web"
+    icon: "bi-code-slash"
+    description: "Sitios web modernos, rápidos y responsivos adaptados exactamente a tus necesidades"
+  - title: "Aplicaciones Web"
+    icon: "bi-window-stack"
+    description: "Apps web complejas y escalables usando las últimas tecnologías del mercado"
+  - title: "E-Commerce"
+    icon: "bi-cart3"
+    description: "Tiendas online optimizadas para conversión, SEO y la mejor experiencia de compra"
+  - title: "Consultoría Tech"
+    icon: "bi-lightbulb"
+    description: "Asesoramiento técnico experto para llevar tu proyecto digital al siguiente nivel"
+
+# Stack de tecnologías (hero)
+tech_stack:
+  - "HTML / CSS"
+  - "JavaScript"
+  - "React"
+  - "Node.js"
+  - "Jekyll"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+
+sass:
+  style: compressed
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - README.md
+  - .gitignore
+  - vendor/

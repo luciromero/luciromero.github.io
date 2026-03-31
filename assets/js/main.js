@@ -1,0 +1,134 @@
+/* =============================================
+   main.js – Página personal con Jekyll
+   ============================================= */
+
+/* ---------- AOS (Animate on Scroll) ---------- */
+AOS.init({
+  duration: 780,
+  easing: 'ease-out-cubic',
+  once: true,
+  offset: 70,
+});
+
+/* ---------- Navbar: clase "scrolled" al hacer scroll ---------- */
+(function () {
+  const nav = document.getElementById('mainNav');
+  if (!nav) return;
+
+  const toggleScrolled = () => {
+    nav.classList.toggle('scrolled', window.scrollY > 48);
+  };
+
+  window.addEventListener('scroll', toggleScrolled, { passive: true });
+  toggleScrolled(); // ejecutar al cargar por si ya está scrolleado
+})();
+
+/* ---------- Smooth scroll + cierre de menú móvil ---------- */
+document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+  anchor.addEventListener('click', function (e) {
+    const href = this.getAttribute('href');
+    if (href === '#') return;
+
+    const target = document.querySelector(href);
+    if (!target) return;
+
+    e.preventDefault();
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    // Cerrar el menú colapsable de Bootstrap en móvil
+    const navCollapse = document.getElementById('navbarNav');
+    if (navCollapse && navCollapse.classList.contains('show')) {
+      const bsCollapse = bootstrap.Collapse.getInstance(navCollapse);
+      if (bsCollapse) bsCollapse.hide();
+    }
+  });
+});
+
+/* ---------- Nav link activo al hacer scroll (Intersection Observer) ---------- */
+(function () {
+  const sections  = document.querySelectorAll('section[id]');
+  const navLinks  = document.querySelectorAll('#mainNav .nav-link');
+  if (!sections.length || !navLinks.length) return;
+
+  const observer = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        navLinks.forEach(function (link) {
+          link.classList.toggle(
+            'active',
+            link.getAttribute('href') === '#' + entry.target.id
+          );
+        });
+      });
+    },
+    { threshold: 0.38 }
+  );
+
+  sections.forEach(function (s) { observer.observe(s); });
+})();
+
+/* ---------- Animación de las barras de habilidades ---------- */
+(function () {
+  const bars = document.querySelectorAll('.progress-bar[data-width]');
+  if (!bars.length) return;
+
+  const observer = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.style.width = entry.target.getAttribute('data-width') + '%';
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.5 }
+  );
+
+  bars.forEach(function (bar) {
+    bar.style.width = '0%';         // asegurar punto de partida
+    observer.observe(bar);
+  });
+})();
+
+/* ---------- Formulario de contacto (Formspree) ---------- */
+(function () {
+  const form = document.getElementById('contactForm');
+  if (!form) return;
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    const btn = form.querySelector('[type="submit"]');
+    const originalHTML = btn.innerHTML;
+
+    // Estado de carga
+    btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Enviando…';
+    btn.disabled = true;
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' },
+      });
+
+      if (response.ok) {
+        btn.innerHTML = '<i class="bi bi-check-circle me-2"></i>¡Mensaje enviado!';
+        btn.style.background = 'linear-gradient(135deg,#00c853,#00e676)';
+        form.reset();
+      } else {
+        throw new Error('server_error');
+      }
+    } catch {
+      btn.innerHTML = '<i class="bi bi-exclamation-circle me-2"></i>Error al enviar. Intenta por email.';
+      btn.style.background = 'linear-gradient(135deg,#d32f2f,#f44336)';
+    } finally {
+      setTimeout(function () {
+        btn.innerHTML = originalHTML;
+        btn.style.background = '';
+        btn.disabled = false;
+      }, 4000);
+    }
+  });
+})();

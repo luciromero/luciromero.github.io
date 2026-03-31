@@ -1,0 +1,88 @@
+<section class="hero-section" id="home">
+
+  <!-- Fondo decorativo -->
+  <div class="hero-bg" aria-hidden="true">
+    <div class="hero-grid"></div>
+    <div class="hero-glow hero-glow-1"></div>
+    <div class="hero-glow hero-glow-2"></div>
+  </div>
+
+  <div class="container position-relative" style="z-index:1;">
+    <div class="row align-items-center min-vh-100 py-5">
+
+      <!-- Texto principal -->
+      <div class="col-lg-7" data-aos="fade-right" data-aos-duration="900">
+
+        <span class="hero-badge">
+          <span class="badge-dot"></span>
+          Disponible para proyectos
+        </span>
+
+        <h1 class="hero-title">
+          Creo experiencias<br>
+          <span class="gradient-text">web excepcionales</span><br>
+          que impulsan tu negocio
+        </h1>
+
+        <p class="hero-subtitle">
+          Desarrollador Full Stack especializado en construir productos digitales
+          modernos, rápidos y escalables. Desde el diseño hasta el despliegue.
+        </p>
+
+        <div class="hero-actions mb-4">
+          <a href="#portfolio" class="btn btn-primary btn-hero btn-lg">
+            Ver mi trabajo <i class="bi bi-arrow-right ms-2"></i>
+          </a>
+          <a href="#contact" class="btn btn-outline-light btn-lg ms-3">
+            Contáctame
+          </a>
+        </div>
+
+        <div class="hero-stack">
+          <span class="stack-label">Stack:</span>
+          {% for tech in site.tech_stack %}
+          <span class="stack-badge">{{ tech }}</span>
+          {% endfor %}
+        </div>
+
+      </div><!-- /col -->
+
+      <!-- Ventana de código decorativa -->
+      <div class="col-lg-5 d-none d-lg-flex justify-content-center"
+           data-aos="fade-left" data-aos-duration="900" data-aos-delay="100">
+        <div class="code-window">
+          <div class="code-window-bar">
+            <span class="dot dot-r"></span>
+            <span class="dot dot-y"></span>
+            <span class="dot dot-g"></span>
+            <span class="code-window-title">portfolio.js</span>
+          </div>
+          <div class="code-window-body">
+<pre class="code-pre"><code><span class="ck">const</span> <span class="cv">developer</span> = {
+  <span class="cp">name</span>:      <span class="cs">"{{ site.author.name }}"</span>,
+  <span class="cp">role</span>:      <span class="cs">"Full Stack Dev"</span>,
+  <span class="cp">location</span>: <span class="cs">"{{ site.author.location }}"</span>,
+  <span class="cp">stack</span>: [
+    <span class="cs">"React"</span>, <span class="cs">"Node.js"</span>,
+    <span class="cs">"Jekyll"</span>, <span class="cs">"PostgreSQL"</span>
+  ],
+  <span class="cp">available</span>: <span class="cb">true</span>,
+  <span class="cp">passion</span>:   <span class="cs">"Clean Code ❤️"</span>
+};
+
+<span class="ck">export default</span> developer;
+</code></pre>
+          </div>
+        </div>
+      </div><!-- /col -->
+
+    </div><!-- /row -->
+
+    <!-- Indicador de scroll -->
+    <div class="scroll-hint" aria-hidden="true">
+      <span class="scroll-hint-text">scroll</span>
+      <div class="scroll-hint-line"></div>
+    </div>
+
+  </div><!-- /container -->
+</section>

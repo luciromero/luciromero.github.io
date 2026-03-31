@@ -1,0 +1,128 @@
+<section class="contact-section" id="contact">
+  <div class="contact-glow" aria-hidden="true"></div>
+  <div class="container position-relative" style="z-index:1;">
+
+    <div class="section-header" data-aos="fade-up">
+      <span class="section-label">Hablemos</span>
+      <h2 class="section-title">¿Tienes un <span class="gradient-text">proyecto</span>?</h2>
+      <p class="section-subtitle">
+        Cuéntame sobre tu idea y trabajemos juntos para hacerla realidad
+      </p>
+    </div>
+
+    <div class="row g-5 mt-1">
+
+      <!-- Información de contacto -->
+      <div class="col-lg-5" data-aos="fade-right">
+
+        <div class="contact-info-list">
+          <div class="contact-info-item">
+            <div class="contact-icon-wrap">
+              <i class="bi bi-envelope"></i>
+            </div>
+            <div>
+              <span class="contact-label">Email</span>
+              <a href="mailto:{{ site.author.email }}" class="contact-value">
+                {{ site.author.email }}
+              </a>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="contact-icon-wrap">
+              <i class="bi bi-geo-alt"></i>
+            </div>
+            <div>
+              <span class="contact-label">Ubicación</span>
+              <span class="contact-value">{{ site.author.location }}</span>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="contact-icon-wrap">
+              <i class="bi bi-clock"></i>
+            </div>
+            <div>
+              <span class="contact-label">Disponibilidad</span>
+              <span class="contact-value">Lun – Vie, 9:00 – 18:00</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Redes sociales -->
+        <div class="social-row mt-4">
+          <a href="https://github.com/{{ site.social.github }}"
+             class="social-btn" target="_blank" rel="noopener noreferrer"
+             aria-label="GitHub">
+            <i class="bi bi-github"></i>
+          </a>
+          <a href="https://linkedin.com/in/{{ site.social.linkedin }}"
+             class="social-btn" target="_blank" rel="noopener noreferrer"
+             aria-label="LinkedIn">
+            <i class="bi bi-linkedin"></i>
+          </a>
+          <a href="https://twitter.com/{{ site.social.twitter }}"
+             class="social-btn" target="_blank" rel="noopener noreferrer"
+             aria-label="X / Twitter">
+            <i class="bi bi-twitter-x"></i>
+          </a>
+        </div>
+
+      </div><!-- /col -->
+
+      <!-- Formulario de contacto -->
+      <!-- Para activarlo: crea una cuenta en https://formspree.io y reemplaza YOUR_FORM_ID -->
+      <div class="col-lg-7" data-aos="fade-left">
+        <form class="contact-form"
+              id="contactForm"
+              action="https://formspree.io/f/YOUR_FORM_ID"
+              method="POST"
+              novalidate>
+          <div class="row g-3">
+
+            <div class="col-md-6">
+              <div class="form-floating">
+                <input type="text" class="form-control" id="fname" name="name"
+                       placeholder="Tu nombre" required autocomplete="name">
+                <label for="fname">Nombre</label>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-floating">
+                <input type="email" class="form-control" id="femail" name="email"
+                       placeholder="tu@email.com" required autocomplete="email">
+                <label for="femail">Email</label>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <div class="form-floating">
+                <input type="text" class="form-control" id="fsubject" name="subject"
+                       placeholder="Asunto">
+                <label for="fsubject">Asunto del proyecto</label>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <div class="form-floating">
+                <textarea class="form-control" id="fmessage" name="message"
+                          placeholder="..." style="height:160px" required></textarea>
+                <label for="fmessage">Cuéntame sobre tu proyecto</label>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <button type="submit" class="btn btn-primary btn-lg w-100 btn-send">
+                <i class="bi bi-send me-2"></i>
+                Enviar mensaje
+              </button>
+            </div>
+
+          </div>
+        </form>
+      </div><!-- /col -->
+
+    </div><!-- /row -->
+  </div>
+</section>

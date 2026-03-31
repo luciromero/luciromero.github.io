@@ -1,0 +1,118 @@
+<section class="about-section" id="about">
+  <div class="container">
+    <div class="row align-items-center g-5">
+
+      <!-- Visual / decorativo -->
+      <div class="col-lg-5" data-aos="fade-right">
+        <div class="about-visual">
+
+          <!-- Tarjeta con monograma y badges flotantes -->
+          <div class="about-card-main">
+            <div class="about-monogram">
+              <span>{{ site.author.initials }}</span>
+            </div>
+            <div class="about-glow"></div>
+            <!-- Badges tecnológicos flotantes -->
+            <div class="tech-float" style="top:10%;right:-12px;" data-aos="zoom-in" data-aos-delay="200">
+              <i class="bi bi-filetype-js"></i> JavaScript
+            </div>
+            <div class="tech-float" style="top:42%;left:-14px;" data-aos="zoom-in" data-aos-delay="300">
+              <i class="bi bi-filetype-jsx"></i> React
+            </div>
+            <div class="tech-float" style="bottom:14%;right:8%;" data-aos="zoom-in" data-aos-delay="400">
+              <i class="bi bi-database"></i> PostgreSQL
+            </div>
+            <div class="tech-float" style="bottom:28%;left:5%;" data-aos="zoom-in" data-aos-delay="500">
+              <i class="bi bi-cloud"></i> AWS
+            </div>
+          </div>
+
+          <!-- Estadísticas -->
+          <div class="about-stats" data-aos="fade-up" data-aos-delay="200">
+            <div class="stat-card">
+              <span class="stat-num">50+</span>
+              <span class="stat-lbl">Proyectos</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-num">5+</span>
+              <span class="stat-lbl">Años exp.</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-num">30+</span>
+              <span class="stat-lbl">Clientes</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Texto y habilidades -->
+      <div class="col-lg-7" data-aos="fade-left">
+        <span class="section-label">Sobre mí</span>
+        <h2 class="section-title">
+          Construyo el futuro <span class="gradient-text">digital</span>
+        </h2>
+
+        <p class="about-text">
+          Soy un desarrollador web Full Stack apasionado por crear soluciones digitales que combinan
+          funcionalidad con diseño excepcional. Con más de 5 años de experiencia, he trabajado en
+          proyectos de diversos sectores, desde startups hasta grandes empresas.
+        </p>
+        <p class="about-text">
+          Mi enfoque se centra en escribir código limpio, escalable y mantenible, siempre priorizando
+          la mejor experiencia para el usuario final.
+        </p>
+
+        <!-- Barras de habilidades -->
+        <div class="skills mt-4">
+          <div class="skill-item">
+            <div class="skill-header">
+              <span class="skill-name">Frontend (React, Vue, Jekyll)</span>
+              <span class="skill-pct">90%</span>
+            </div>
+            <div class="progress">
+              <div class="progress-bar" data-width="90"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-header">
+              <span class="skill-name">Backend (Node.js, Python, PHP)</span>
+              <span class="skill-pct">85%</span>
+            </div>
+            <div class="progress">
+              <div class="progress-bar" data-width="85"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-header">
+              <span class="skill-name">UI/UX Design</span>
+              <span class="skill-pct">80%</span>
+            </div>
+            <div class="progress">
+              <div class="progress-bar" data-width="80"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-header">
+              <span class="skill-name">DevOps &amp; Cloud</span>
+              <span class="skill-pct">75%</span>
+            </div>
+            <div class="progress">
+              <div class="progress-bar" data-width="75"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-4 d-flex flex-wrap gap-3">
+          <a href="#contact" class="btn btn-primary btn-lg">
+            Trabajemos juntos
+          </a>
+          <a href="{{ '/assets/cv.pdf' | relative_url }}" class="btn btn-outline-light btn-lg" download>
+            <i class="bi bi-download me-2"></i>Descargar CV
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>

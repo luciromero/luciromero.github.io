@@ -1,0 +1,36 @@
+// =============================================
+// PALETA DE COLORES: NEGRO · AZUL · BLANCO
+// =============================================
+
+// Negros
+$c-black-1:   #08080f;     // fondo principal
+$c-black-2:   #0e0e1a;     // fondo secundario / secciones oscuras
+$c-black-3:   #141424;     // tarjetas
+$c-black-4:   #1d1d30;     // bordes / separadores
+$c-black-5:   #24243c;     // bordes hover
+
+// Azules
+$c-blue:      #0066ff;     // azul primario
+$c-blue-dk:   #0052cc;     // azul oscuro
+$c-blue-lt:   #4d9eff;     // azul claro
+$c-blue-acc:  #00d4ff;     // azul cian (acento)
+$c-blue-glow: rgba(0,102,255,.15);
+$c-blue-grad: linear-gradient(135deg, #0066ff, #00d4ff);
+
+// Blancos y grises
+$c-white:     #ffffff;
+$c-white-2:   #e6edf8;
+$c-gray:      #7a8498;
+$c-gray-lt:   #9faabf;
+
+// =============================================
+// TIPOGRAFÍA
+// =============================================
+$font-sans:   'Space Grotesk', system-ui, sans-serif;
+$font-mono:   'Fira Code', 'Cascadia Code', monospace;
+
+// =============================================
+// SPACING
+// =============================================
+$section-y: 110px;
+$section-y-sm: 64px;
