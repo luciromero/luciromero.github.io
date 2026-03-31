@@ -30,41 +30,39 @@ layout: default
 
 <section class="service-detail-content section-dark {% if is_marketing %}service-detail-content-mkt{% endif %}">
   <div class="container">
-    <div class="row g-4">
+    <div class="row g-5 service-detail-overview align-items-start">
       <div class="col-lg-5">
-        <div class="service-detail-card service-detail-card-includes">
-          <div class="service-detail-card-head">
-            <span class="service-detail-kicker">Que incluye</span>
-            <h2 class="service-detail-h2">Entregables claros y pensados para convertir</h2>
-            <p class="service-detail-card-sub">Cada servicio tiene alcance definido, foco en negocio y entregas concretas.</p>
+        <div class="service-detail-panel">
+          <div class="service-detail-panel-head d-flex align-items-center gap-2 mb-3">
+            <span class="service-detail-panel-icon"><i class="bi bi-check2-circle"></i></span>
+            <span class="service-detail-kicker mb-0">Que incluye</span>
           </div>
+          <h2 class="service-detail-h2">Incluye</h2>
           {% if page.deliverables %}
-          <div class="service-detail-points">
+          <ul class="service-detail-list list-unstyled mb-0">
             {% for item in page.deliverables %}
-            <div class="service-detail-point">
-              <span class="service-detail-point-icon"><i class="bi bi-check2"></i></span>
-              <div>
-                <span class="service-detail-point-text">{{ item }}</span>
-              </div>
-            </div>
+            <li class="service-detail-list-item d-flex align-items-start gap-3">
+              <span class="service-detail-list-bullet"><i class="bi bi-plus-lg"></i></span>
+              <span class="service-detail-list-text">{{ item }}</span>
+            </li>
             {% endfor %}
-          </div>
+          </ul>
           {% endif %}
         </div>
       </div>
 
       <div class="col-lg-7">
-        <div class="service-detail-card service-detail-card-process">
-          <div class="service-detail-card-head">
-            <span class="service-detail-kicker">Proceso de trabajo</span>
-            <h2 class="service-detail-h2">Un recorrido simple, ordenado y sin fricción</h2>
-            <p class="service-detail-card-sub">Trabajo por etapas para que siempre tengas visibilidad de avances, tiempos y prioridades.</p>
+        <div class="service-detail-panel service-detail-panel-process">
+          <div class="service-detail-panel-head d-flex align-items-center gap-2 mb-3">
+            <span class="service-detail-panel-icon"><i class="bi bi-diagram-3"></i></span>
+            <span class="service-detail-kicker mb-0">Proceso de trabajo</span>
           </div>
+          <h2 class="service-detail-h2">Proceso</h2>
           {% if page.process %}
-          <ol class="service-process-list">
+          <ol class="service-process-list list-unstyled mb-0">
             {% for step in page.process %}
             <li>
-              <div class="service-step-badge-wrap">
+              <div class="service-step-rail">
                 <span class="service-step-num">{{ forloop.index }}</span>
               </div>
               <div class="service-step-body">
@@ -79,7 +77,7 @@ layout: default
       </div>
     </div>
 
-    <div class="service-detail-body-card">
+    <div class="service-detail-body-wrap">
       <div class="service-detail-body">
         {{ content }}
       </div>
