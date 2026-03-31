@@ -12,22 +12,22 @@ description: "Desarrollo web profesional y soluciones digitales a medida para tu
 # Si el repo se llama "tuusuario.github.io":
 #   url: "https://tuusuario.github.io"
 #   baseurl: ""
-url: "https://tuusuario.github.io"
+url: "https://luciromero.github.io"
 baseurl: ""
 
 # Autor
 author:
   name: "Luciana Romero"
   initials: "LR"
-  email: "contacto@tudominio.com"
-  location: "Buenos Aires, Argentina"
+  email: "luucir@hotmail.com"
+  location: "Cordoba, Argentina"
   bio: "Desarrolladora web Full Stack con pasión por crear experiencias digitales excepcionales"
 
 # Redes sociales
 social:
-  github: "tuusuario"
-  linkedin: "tuusuario"
-  twitter: "tuusuario"
+  github: "luciromero"
+  linkedin: "luciromero"
+  # twitter: "luciromero"
 
 # Servicios Web
 services_web:

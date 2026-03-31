@@ -4,7 +4,7 @@ title: "Aplicaciones Web"
 category: "Desarrollo & Tecnologia"
 permalink: /servicios/aplicaciones-web/
 summary: "Construccion de aplicaciones web a medida, escalables y centradas en la experiencia del usuario."
-image: "/assets/images/services/aplicaciones-web.jpg"
+image: "/assets/images/services/aplicaciones-web.png"
 deliverables:
   - "Definicion de modulos y flujos del producto"
   - "Desarrollo frontend y backend integrado"

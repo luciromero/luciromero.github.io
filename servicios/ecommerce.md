@@ -4,7 +4,7 @@ title: "E-Commerce"
 category: "Desarrollo & Tecnologia"
 permalink: /servicios/ecommerce/
 summary: "Tiendas online orientadas a conversion, con foco en experiencia de compra y crecimiento sostenible."
-image: "/assets/images/services/ecommerce.jpg"
+image: "/assets/images/services/ecommerce.png"
 deliverables:
   - "Catalogo de productos y estructura de categorias"
   - "Checkout optimizado y metodos de pago"
