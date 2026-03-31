@@ -25,12 +25,6 @@ layout: default
     {% if page.summary %}
     <p class="service-detail-summary">{{ page.summary }}</p>
     {% endif %}
-
-    {% if page.image %}
-    <div class="service-detail-media-wrap">
-      <img class="service-detail-media" src="{{ page.image | relative_url }}" alt="{{ page.title }}" loading="lazy">
-    </div>
-    {% endif %}
   </div>
 </section>
 
@@ -38,37 +32,56 @@ layout: default
   <div class="container">
     <div class="row g-4">
       <div class="col-lg-5">
-        <div class="service-detail-card">
-          <h2 class="service-detail-h2">Que incluye</h2>
+        <div class="service-detail-card service-detail-card-includes">
+          <div class="service-detail-card-head">
+            <span class="service-detail-kicker">Que incluye</span>
+            <h2 class="service-detail-h2">Entregables claros y pensados para convertir</h2>
+            <p class="service-detail-card-sub">Cada servicio tiene alcance definido, foco en negocio y entregas concretas.</p>
+          </div>
           {% if page.deliverables %}
-          <ul class="service-detail-list">
+          <div class="service-detail-points">
             {% for item in page.deliverables %}
-            <li>{{ item }}</li>
+            <div class="service-detail-point">
+              <span class="service-detail-point-icon"><i class="bi bi-check2"></i></span>
+              <div>
+                <span class="service-detail-point-text">{{ item }}</span>
+              </div>
+            </div>
             {% endfor %}
-          </ul>
+          </div>
           {% endif %}
         </div>
       </div>
 
       <div class="col-lg-7">
-        <div class="service-detail-card">
-          <h2 class="service-detail-h2">Proceso de trabajo</h2>
+        <div class="service-detail-card service-detail-card-process">
+          <div class="service-detail-card-head">
+            <span class="service-detail-kicker">Proceso de trabajo</span>
+            <h2 class="service-detail-h2">Un recorrido simple, ordenado y sin fricción</h2>
+            <p class="service-detail-card-sub">Trabajo por etapas para que siempre tengas visibilidad de avances, tiempos y prioridades.</p>
+          </div>
           {% if page.process %}
           <ol class="service-process-list">
             {% for step in page.process %}
             <li>
-              <span class="service-step-num">{{ forloop.index }}</span>
-              <h3>{{ step.title }}</h3>
-              <p>{{ step.detail }}</p>
+              <div class="service-step-badge-wrap">
+                <span class="service-step-num">{{ forloop.index }}</span>
+              </div>
+              <div class="service-step-body">
+                <h3>{{ step.title }}</h3>
+                <p>{{ step.detail }}</p>
+              </div>
             </li>
             {% endfor %}
           </ol>
           {% endif %}
-
-          <div class="service-detail-body">
-            {{ content }}
-          </div>
         </div>
+      </div>
+    </div>
+
+    <div class="service-detail-body-card">
+      <div class="service-detail-body">
+        {{ content }}
       </div>
     </div>
 
