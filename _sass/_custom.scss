@@ -68,6 +68,17 @@ img { max-width: 100%; height: auto; }
   padding: 1.1rem 0;
   transition: padding .3s, background .3s, box-shadow .3s;
 
+  // En móvil siempre fondo sólido (el menú desplegado queda transparente sin esto)
+  @media (max-width: 991.98px) {
+    background: $c-black-2 !important;
+    border-bottom: 1px solid $c-black-4;
+
+    // El colapso no necesita animación extra – Bootstrap ya lo maneja
+    .navbar-collapse {
+      padding: .5rem 0 .75rem;
+    }
+  }
+
   &.scrolled {
     background: rgba($c-black-2, .88);
     backdrop-filter: blur(18px);
@@ -577,8 +588,9 @@ $c-mkt-glow:   rgba(255, 107, 43, .15);
   border-radius: 24px;
   padding: 3.5rem 2.5rem;
   text-align: center;
-  overflow: visible;
+  overflow: visible;          // necesario para que los badges salgan fuera de la tarjeta
   margin-bottom: 1.5rem;
+  min-height: 260px;          // garantiza espacio para los badges aunque el contenido sea pequeño
 }
 
 .about-monogram {
@@ -1088,6 +1100,11 @@ body.theme-light {
   }
 
   #mainNav {
+    @media (max-width: 991.98px) {
+      background: #ffffff !important;
+      border-bottom: 1px solid #d6dfec;
+    }
+
     &.scrolled {
       background: rgba(255, 255, 255, .9);
       border-bottom: 1px solid #d6dfec;
@@ -1297,7 +1314,12 @@ body.theme-light {
   .hero-section { padding-top: 80px; }
 
   .about-card-main { padding: 2.5rem 1.5rem; }
-  .tech-float { display: none; }   // Ocultar flotantes en móvil para evitar overflow
+  // NO ocultamos tech-float aquí — solo en móvil pequeño (ver abajo)
+}
+
+// Solo en pantallas muy pequeñas ocultar los badges flotantes para evitar overflow
+@media (max-width: 575.98px) {
+  .tech-float { display: none; }
 }
 
 @media (max-width: 767.98px) {
