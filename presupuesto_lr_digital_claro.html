@@ -188,6 +188,51 @@ permalink: /admin/presupuesto/
     display: grid !important;
   }
 
+  .pdf-export-pages {
+    width: 820px;
+    position: absolute;
+    left: -9999px;
+    top: 0;
+  }
+
+  .pdf-export-page {
+    width: 820px;
+    background: #fff;
+    color: #1f2328;
+    padding: 22px;
+  }
+
+  .pdf-export-page + .pdf-export-page {
+    margin-top: 18px;
+  }
+
+  .pdf-export-cover .header {
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.65rem;
+  }
+
+  .pdf-export-cover .doc-title {
+    font-size: 22px;
+  }
+
+  .pdf-export-cover .parties {
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .pdf-export-cover .party-card {
+    padding: 0.7rem 0.8rem;
+  }
+
+  .pdf-export-cover .dates-row {
+    gap: 0.8rem;
+    margin-bottom: 0;
+  }
+
+  .pdf-export-cover .date-card {
+    padding: 0.55rem 0.75rem;
+  }
+
   @media (max-width: 900px) {
     .header, .parties, .dates-row, .terms-grid, .sig-row { grid-template-columns: 1fr; display: grid; }
     .header { display: block; }
@@ -716,7 +761,10 @@ permalink: /admin/presupuesto/
   }
 
   async function downloadTemplatePDF() {
-    if (typeof html2pdf === 'undefined') {
+    const hasHtml2Canvas = typeof window.html2canvas !== 'undefined';
+    const hasJsPdf = typeof window.jspdf !== 'undefined' && typeof window.jspdf.jsPDF !== 'undefined';
+
+    if (!hasHtml2Canvas || !hasJsPdf) {
       alert('No se pudo cargar el exportador de PDF. Revisá tu conexión a internet.');
       return;
     }
@@ -727,60 +775,102 @@ permalink: /admin/presupuesto/
     const docNum = (document.getElementById('doc-num')?.textContent || 'presupuesto').trim().replace(/\s+/g, '-');
     const fileName = 'presupuesto-' + docNum + '.pdf';
 
-    // Clonar el wrap y prepararlo para exportación
-    document.body.classList.add('exporting-pdf');
-
     const clone = source.cloneNode(true);
-    clone.classList.add('pdf-clone', 'pdf-header-compact');
-
-    // Quitar elementos de UI del clon
+    clone.classList.add('pdf-clone');
     clone.querySelectorAll('.actions, .saved-panel, .add-row-btn, .delete-row').forEach(function (el) {
       el.remove();
     });
-
-    // Quitar contenteditable del clon para que los textos se vean bien
     clone.querySelectorAll('[contenteditable]').forEach(function (el) {
       el.removeAttribute('contenteditable');
     });
 
-    // Agregar saltos de página entre secciones principales
+    const allSectionTitles = Array.from(clone.querySelectorAll('.section-title'));
+    const servicesTitle = allSectionTitles.find(function (el) {
+      return el.textContent.trim().toLowerCase().includes('mis servicios');
+    });
     const adsTitle = clone.querySelector('.section-title.ads');
-    if (adsTitle) adsTitle.classList.add('pdf-page-break');
-
-    const notesTitle = Array.from(clone.querySelectorAll('.section-title')).find(function (el) {
+    const notesTitle = allSectionTitles.find(function (el) {
       return el.textContent.trim().toLowerCase().includes('notas');
     });
-    if (notesTitle) notesTitle.classList.add('pdf-page-break');
 
-    // Estilos extra en línea para el clon: forzar grillas y compactar cabecera
-    clone.style.cssText = 'max-width:860px;margin:0;padding:1.5rem;font-size:13px;';
+    const pdfRoot = document.createElement('div');
+    pdfRoot.className = 'pdf-export-pages';
 
-    const container = document.createElement('div');
-    container.style.cssText = 'position:absolute;left:-9999px;top:0;width:860px;';
-    container.appendChild(clone);
-    document.body.appendChild(container);
+    function createPage(pageClass) {
+      const page = document.createElement('section');
+      page.className = 'pdf-export-page ' + (pageClass || '');
+      pdfRoot.appendChild(page);
+      return page;
+    }
+
+    function appendNodesBetween(startNode, endNode, targetPage) {
+      if (!startNode || !targetPage) return;
+      let current = startNode;
+      while (current && current !== endNode) {
+        const next = current.nextElementSibling;
+        targetPage.appendChild(current);
+        current = next;
+      }
+    }
+
+    const coverPage = createPage('pdf-export-cover');
+    ['.header', '.parties', '.dates-row'].forEach(function (selector) {
+      const el = clone.querySelector(selector);
+      if (el) coverPage.appendChild(el);
+    });
+
+    const servicesPage = createPage('pdf-export-services');
+    appendNodesBetween(servicesTitle, adsTitle, servicesPage);
+
+    const adsPage = createPage('pdf-export-ads');
+    appendNodesBetween(adsTitle, notesTitle, adsPage);
+
+    const closingPage = createPage('pdf-export-closing');
+    appendNodesBetween(notesTitle, null, closingPage);
+
+    document.body.classList.add('exporting-pdf');
+    document.body.appendChild(pdfRoot);
 
     try {
-      await html2pdf()
-        .set({
-          margin: [8, 8, 10, 8],
-          filename: fileName,
-          image: { type: 'jpeg', quality: 0.98 },
-          html2canvas: {
-            scale: 2,
-            useCORS: true,
-            scrollY: 0,
-            scrollX: 0,
-            windowWidth: 900,
-            logging: false,
-          },
-          jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-          pagebreak: { mode: ['css', 'legacy'], before: '.pdf-page-break' },
-        })
-        .from(clone)
-        .save();
+      const { jsPDF } = window.jspdf;
+      const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+
+      const pageW = pdf.internal.pageSize.getWidth();
+      const pageH = pdf.internal.pageSize.getHeight();
+      const margin = 8;
+      const maxW = pageW - margin * 2;
+      const maxH = pageH - margin * 2;
+
+      const pages = Array.from(pdfRoot.querySelectorAll('.pdf-export-page'));
+      for (let i = 0; i < pages.length; i += 1) {
+        const pageEl = pages[i];
+        if (!pageEl || !pageEl.children.length) continue;
+
+        const canvas = await window.html2canvas(pageEl, {
+          scale: 2,
+          useCORS: true,
+          backgroundColor: '#ffffff',
+          windowWidth: 900,
+          scrollX: 0,
+          scrollY: 0,
+          logging: false,
+        });
+
+        const imgW = canvas.width;
+        const imgH = canvas.height;
+        const ratio = Math.min(maxW / imgW, maxH / imgH);
+        const renderW = imgW * ratio;
+        const renderH = imgH * ratio;
+        const x = (pageW - renderW) / 2;
+        const y = margin;
+
+        if (i > 0) pdf.addPage();
+        pdf.addImage(canvas.toDataURL('image/jpeg', 0.98), 'JPEG', x, y, renderW, renderH, undefined, 'FAST');
+      }
+
+      pdf.save(fileName);
     } finally {
-      document.body.removeChild(container);
+      document.body.removeChild(pdfRoot);
       document.body.classList.remove('exporting-pdf');
     }
   }
