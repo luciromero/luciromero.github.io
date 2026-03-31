@@ -2089,6 +2089,29 @@ body.theme-light {
   .site-footer .footer-nav { justify-content: flex-start; margin-top: .75rem; }
 }
 
+// ─── WHATSAPP CONTACT BUTTON ─────────────────────────────────────────────
+.btn-whatsapp {
+  background: #25d366;
+  color: #fff;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover, &:focus-visible {
+    background: #1ebe5d;
+    color: #fff;
+    box-shadow: 0 4px 18px rgba(37, 211, 102, .40);
+  }
+}
+
+.social-btn-wa {
+  background: rgba(37, 211, 102, .15) !important;
+  color: #25d366 !important;
+  border-color: rgba(37, 211, 102, .3) !important;
+  &:hover { background: rgba(37, 211, 102, .28) !important; }
+}
+
 // ─── WHATSAPP FLOATING BUTTON ──────────────────────────────────────────────
 .whatsapp-fab {
   position: fixed;

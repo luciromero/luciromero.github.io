@@ -194,3 +194,51 @@ document.querySelectorAll('a[href*="#"]').forEach(function (anchor) {
     }
   });
 })();
+
+/* ---------- Pre-llenar formulario desde parámetros de plan ---------- */
+(function () {
+  const params = new URLSearchParams(window.location.search);
+  const plan     = params.get('plan');
+  const servicio = params.get('servicio');
+  const precio   = params.get('precio');
+
+  if (!plan || !servicio) return;
+
+  const subj = document.getElementById('fsubject');
+  const msg  = document.getElementById('fmessage');
+
+  if (subj && !subj.value) {
+    subj.value = 'Plan ' + plan + ' – ' + servicio;
+  }
+
+  if (msg && !msg.value) {
+    const precioStr = precio ? ' (desde ' + precio + ')' : '';
+    msg.value = 'Hola, me interesa el plan "' + plan + '" de ' + servicio + precioStr + '.\n\n';
+    // Posicionar el cursor al final para que el usuario agregue su descripción
+    msg.focus();
+    msg.setSelectionRange(msg.value.length, msg.value.length);
+  }
+})();
+
+/* ---------- Botón WhatsApp del formulario de contacto ---------- */
+(function () {
+  const waBtn = document.getElementById('whatsappContactBtn');
+  if (!waBtn) return;
+
+  waBtn.addEventListener('click', function () {
+    const name    = (document.getElementById('fname')?.value    || '').trim();
+    const contact = (document.getElementById('femail')?.value   || '').trim();
+    const subject = (document.getElementById('fsubject')?.value || '').trim();
+    const message = (document.getElementById('fmessage')?.value || '').trim();
+
+    var parts = [];
+    if (name)    parts.push('Hola, soy ' + name + (contact ? ' (' + contact + ')' : '') + '.');
+    if (subject) parts.push('*' + subject + '*');
+    if (message) parts.push(message);
+
+    const text  = parts.join('\n');
+    const phone = waBtn.getAttribute('data-phone');
+    const url   = 'https://wa.me/' + phone + '?text=' + encodeURIComponent(text);
+    window.open(url, '_blank', 'noopener,noreferrer');
+  });
+})();

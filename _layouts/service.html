@@ -104,7 +104,9 @@ layout: default
               <li><i class="bi bi-check2"></i> {{ feat }}</li>
               {% endfor %}
             </ul>
-            <a href="{{ '/#contact' | relative_url }}" class="btn {% if plan.highlight %}btn-primary{% else %}btn-outline-light{% endif %} w-100 mt-auto">
+            {% capture plan_precio %}{{ plan.currency | default: 'USD' }} {{ plan.price_from }}{% endcapture %}
+            <a href="{{ '/' | relative_url }}?plan={{ plan.name | url_encode }}&servicio={{ page.title | url_encode }}&precio={{ plan_precio | url_encode }}#contact"
+               class="btn {% if plan.highlight %}btn-primary{% else %}btn-outline-light{% endif %} w-100 mt-auto">
               Solicitar este plan <i class="bi bi-arrow-right ms-1"></i>
             </a>
           </div>
