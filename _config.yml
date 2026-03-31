@@ -13,7 +13,7 @@ description: "Desarrollo web profesional y soluciones digitales a medida para tu
 #   url: "https://tuusuario.github.io"
 #   baseurl: ""
 url: "https://tuusuario.github.io"
-baseurl: "/pagina-personal"
+baseurl: ""
 
 # Autor
 author:
