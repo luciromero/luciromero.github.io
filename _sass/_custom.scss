@@ -475,7 +475,7 @@ img { max-width: 100%; height: auto; }
   transition: color .3s, opacity .3s;
 }
 
-// Tarjeta horizontal
+// Tarjeta horizontal (legacy — se mantiene por compatibilidad)
 .service-card-h {
   display: flex;
   align-items: center;
@@ -483,6 +483,80 @@ img { max-width: 100%; height: auto; }
   height: auto;
 
   .service-icon-wrap { flex-shrink: 0; margin-bottom: 0; }
+}
+
+// Acento marketing (naranja‑cálido)
+$c-mkt:        #ff6b2b;
+$c-mkt-dk:     #e05520;
+$c-mkt-grad:   linear-gradient(135deg, #ff6b2b, #ffad42);
+$c-mkt-glow:   rgba(255, 107, 43, .15);
+
+// Grupos de servicios
+.services-group { margin-top: 3rem; }
+
+.services-group-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.8rem;
+}
+
+.services-group-icon {
+  width: 48px; height: 48px;
+  border-radius: 12px;
+  background: $c-blue-grad;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem;
+  color: $c-white;
+  flex-shrink: 0;
+
+  &.services-group-icon-mkt {
+    background: $c-mkt-grad;
+  }
+}
+
+.services-group-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: $c-white;
+  margin: 0 0 .2rem;
+}
+
+.services-group-sub {
+  font-size: .85rem;
+  color: $c-gray;
+  margin: 0;
+}
+
+.services-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, $c-black-4 50%, transparent);
+  margin: 3rem 0 0;
+}
+
+// Tarjeta marketing (variante naranja)
+.service-card-mkt {
+  &:hover {
+    border-color: rgba($c-mkt, .38);
+    box-shadow: 0 20px 55px rgba(0,0,0,.3), 0 0 0 1px rgba($c-mkt, .12);
+
+    &::before { background: $c-mkt-grad; transform: scaleX(1); }
+    &::after  { background: radial-gradient(circle at 20% 20%, rgba($c-mkt, .07), transparent 55%); opacity: 1; }
+
+    .service-icon-mkt {
+      background: $c-mkt-grad;
+      border-color: transparent;
+      box-shadow: 0 8px 24px rgba($c-mkt, .4);
+      color: $c-white;
+    }
+    .service-arrow { color: $c-mkt; opacity: 1; }
+  }
+}
+
+.service-icon-mkt {
+  background: rgba($c-mkt, .1);
+  border-color: rgba($c-mkt, .22);
+  color: $c-mkt;
 }
 
 // =============================================
@@ -586,31 +660,59 @@ img { max-width: 100%; height: auto; }
   margin-bottom: .9rem;
 }
 
-// Skill bars
-.skill-item {
-  margin-bottom: 1.1rem;
+// =============================================
+// SKILLS PILLS (reemplazo de barras)
+// =============================================
+.skills-tags { }
 
-  .skill-header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: .35rem;
+.skills-tags-label {
+  font-family: $font-mono;
+  font-size: .72rem;
+  color: $c-gray;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  margin-bottom: .7rem;
+}
+
+.skills-tags-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-bottom: .3rem;
+}
+
+.skill-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: .38rem;
+  padding: .32rem .85rem;
+  background: rgba($c-blue, .08);
+  border: 1px solid rgba($c-blue, .2);
+  border-radius: 50px;
+  font-size: .82rem;
+  font-family: $font-mono;
+  color: $c-white-2;
+  transition: background .25s, border-color .25s, color .25s, transform .2s;
+
+  i { color: $c-blue-lt; font-size: .88rem; }
+
+  &:hover {
+    background: rgba($c-blue, .18);
+    border-color: rgba($c-blue, .45);
+    color: $c-white;
+    transform: translateY(-2px);
   }
 }
 
-.skill-name { font-weight: 500; font-size: .88rem; color: $c-white-2; }
-.skill-pct  { font-family: $font-mono; font-size: .82rem; color: $c-blue-lt; }
+.skill-pill-mkt {
+  background: rgba($c-mkt, .08);
+  border-color: rgba($c-mkt, .2);
 
-.progress {
-  height: 5px;
-  background: rgba($c-white, .06);
-  border-radius: 3px;
-  overflow: hidden;
+  i { color: $c-mkt; }
 
-  .progress-bar {
-    background: $c-blue-grad;
-    border-radius: 3px;
-    width: 0;
-    transition: width 1.4s cubic-bezier(.22,.61,.36,1);
+  &:hover {
+    background: rgba($c-mkt, .16);
+    border-color: rgba($c-mkt, .45);
   }
 }
 
@@ -686,6 +788,68 @@ img { max-width: 100%; height: auto; }
 }
 
 .port-links { display: flex; flex-wrap: wrap; gap: .5rem; }
+
+// Íconos abstractos dentro de las tarjetas de portafolio
+.port-card-abstract .port-thumb {
+  position: relative;
+}
+
+.port-abstract-icon {
+  width: 72px; height: 72px;
+  border-radius: 18px;
+  background: rgba($c-white, .06);
+  border: 1px solid rgba($c-white, .1);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2.2rem;
+  color: rgba($c-white, .55);
+}
+
+.port-result {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  font-size: .8rem;
+  font-family: $font-mono;
+  color: $c-blue-lt;
+  margin-top: .5rem;
+
+  i { font-size: .9rem; }
+}
+
+// Tarjeta pequeña: ícono abstracto centrado
+.port-abstract-sm {
+  width: 52px; height: 52px;
+  border-radius: 13px;
+  background: rgba($c-blue, .1);
+  border: 1px solid rgba($c-blue, .2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem;
+  color: $c-blue-lt;
+  transition: background .3s, box-shadow .3s;
+
+  .port-card-sm:hover & {
+    background: $c-blue-grad;
+    border-color: transparent;
+    color: $c-white;
+    box-shadow: 0 8px 24px rgba($c-blue, .35);
+  }
+}
+
+// CTA al final del portafolio
+.portfolio-cta {
+  margin-top: 3.5rem;
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  border: 1px dashed rgba($c-blue, .25);
+  border-radius: 16px;
+  background: rgba($c-blue, .04);
+}
+
+.portfolio-cta-text {
+  font-size: 1.05rem;
+  color: $c-gray;
+  margin-bottom: 1.2rem;
+}
 
 // Tarjeta pequeña
 .port-card-sm {
@@ -1040,6 +1204,50 @@ body.theme-light {
   .scroll-hint .scroll-hint-text {
     color: #64748b;
   }
+
+  // Skill pills en tema claro
+  .skill-pill {
+    background: rgba($c-blue, .06);
+    border-color: rgba($c-blue, .15);
+    color: #334155;
+    i { color: $c-blue; }
+    &:hover { background: rgba($c-blue, .13); }
+  }
+
+  .skill-pill-mkt {
+    background: rgba(#ff6b2b, .06);
+    border-color: rgba(#ff6b2b, .18);
+    i { color: #e05520; }
+    &:hover { background: rgba(#ff6b2b, .12); }
+  }
+
+  .skills-tags-label { color: #94a3b8; }
+
+  // Portafolio en tema claro
+  .port-abstract-icon {
+    background: rgba(15, 23, 42, .05);
+    border-color: rgba(15, 23, 42, .1);
+    color: rgba(15, 23, 42, .35);
+  }
+
+  .port-result { color: $c-blue; }
+
+  .port-abstract-sm {
+    background: rgba($c-blue, .07);
+    border-color: rgba($c-blue, .15);
+    color: $c-blue;
+  }
+
+  .portfolio-cta {
+    border-color: rgba($c-blue, .18);
+    background: rgba($c-blue, .025);
+  }
+  .portfolio-cta-text { color: #64748b; }
+
+  // Servicios en tema claro
+  .services-group-title { color: #0f172a; }
+  .services-group-sub   { color: #64748b; }
+  .services-divider     { background: linear-gradient(90deg, transparent, #d6dfec 50%, transparent); }
 
   .code-window .code-window-bar {
     background: rgba(15, 23, 42, .04);

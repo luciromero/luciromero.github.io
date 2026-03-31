@@ -5,57 +5,66 @@
       <span class="section-label">Lo que hago</span>
       <h2 class="section-title">Servicios <span class="gradient-text">profesionales</span></h2>
       <p class="section-subtitle">
-        Soluciones digitales completas adaptadas a las necesidades reales de tu negocio
+        Desarrollo web y marketing digital: una sola profesional para impulsar todo tu negocio online
       </p>
     </div>
 
-    <!-- Tarjetas de servicios desde _config.yml -->
-    <div class="row g-4 mt-1">
-      {% for service in site.services %}
-      <div class="col-sm-6 col-lg-3"
-           data-aos="fade-up"
-           data-aos-delay="{{ forloop.index | times: 80 }}">
-        <div class="service-card">
-          <div class="service-icon-wrap">
-            <i class="bi {{ service.icon }}"></i>
-          </div>
-          <h3 class="service-title">{{ service.title }}</h3>
-          <p class="service-desc">{{ service.description }}</p>
-          <span class="service-arrow"><i class="bi bi-arrow-up-right"></i></span>
+    <!-- ── BLOQUE 1: SERVICIOS WEB ───────────────────────── -->
+    <div class="services-group" data-aos="fade-up">
+      <div class="services-group-header">
+        <span class="services-group-icon"><i class="bi bi-code-slash"></i></span>
+        <div>
+          <h3 class="services-group-title">Desarrollo &amp; Tecnología</h3>
+          <p class="services-group-sub">Solución técnica completa — del diseño al despliegue</p>
         </div>
       </div>
-      {% endfor %}
+
+      <div class="row g-4">
+        {% for service in site.services_web %}
+        <div class="col-sm-6 col-lg-3"
+             data-aos="fade-up"
+             data-aos-delay="{{ forloop.index | times: 70 }}">
+          <div class="service-card">
+            <div class="service-icon-wrap">
+              <i class="bi {{ service.icon }}"></i>
+            </div>
+            <h3 class="service-title">{{ service.title }}</h3>
+            <p class="service-desc">{{ service.description }}</p>
+            <span class="service-arrow"><i class="bi bi-arrow-up-right"></i></span>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
     </div>
 
-    <!-- Servicios adicionales en formato horizontal -->
-    <div class="row g-4 mt-2">
-      <div class="col-lg-6" data-aos="fade-up">
-        <div class="service-card service-card-h">
-          <div class="service-icon-wrap service-icon-lg">
-            <i class="bi bi-speedometer2"></i>
-          </div>
-          <div>
-            <h3 class="service-title mb-1">Optimización &amp; Performance</h3>
-            <p class="service-desc mb-0">
-              Mejoro velocidad y Core Web Vitals para una mejor experiencia de usuario
-              y un posicionamiento SEO superior.
-            </p>
-          </div>
+    <!-- Divisor visual -->
+    <div class="services-divider" data-aos="fade-up"></div>
+
+    <!-- ── BLOQUE 2: MARKETING DIGITAL ───────────────────── -->
+    <div class="services-group" data-aos="fade-up">
+      <div class="services-group-header">
+        <span class="services-group-icon services-group-icon-mkt"><i class="bi bi-graph-up-arrow"></i></span>
+        <div>
+          <h3 class="services-group-title">Marketing Digital</h3>
+          <p class="services-group-sub">Visibilidad, tráfico y conversión para tu negocio</p>
         </div>
       </div>
-      <div class="col-lg-6" data-aos="fade-up" data-aos-delay="80">
-        <div class="service-card service-card-h">
-          <div class="service-icon-wrap service-icon-lg">
-            <i class="bi bi-phone"></i>
-          </div>
-          <div>
-            <h3 class="service-title mb-1">Diseño Responsive</h3>
-            <p class="service-desc mb-0">
-              Interfaces que se adaptan perfectamente a cualquier dispositivo,
-              desde móviles hasta pantallas ultrawide.
-            </p>
+
+      <div class="row g-4">
+        {% for service in site.services_marketing %}
+        <div class="col-sm-6 col-lg-3"
+             data-aos="fade-up"
+             data-aos-delay="{{ forloop.index | times: 70 }}">
+          <div class="service-card service-card-mkt">
+            <div class="service-icon-wrap service-icon-mkt">
+              <i class="bi {{ service.icon }}"></i>
+            </div>
+            <h3 class="service-title">{{ service.title }}</h3>
+            <p class="service-desc">{{ service.description }}</p>
+            <span class="service-arrow"><i class="bi bi-arrow-up-right"></i></span>
           </div>
         </div>
+        {% endfor %}
       </div>
     </div>
 

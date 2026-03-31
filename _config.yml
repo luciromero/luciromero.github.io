@@ -29,20 +29,35 @@ social:
   linkedin: "tuusuario"
   twitter: "tuusuario"
 
-# Servicios (se renderizan en la sección Servicios)
-services:
+# Servicios Web
+services_web:
   - title: "Desarrollo Web"
     icon: "bi-code-slash"
-    description: "Sitios web modernos, rápidos y responsivos adaptados exactamente a tus necesidades"
+    description: "Sitios web modernos, rápidos y responsivos adaptados exactamente a tus necesidades."
   - title: "Aplicaciones Web"
     icon: "bi-window-stack"
-    description: "Apps web complejas y escalables usando las últimas tecnologías del mercado"
+    description: "Apps web complejas y escalables usando las últimas tecnologías del mercado."
   - title: "E-Commerce"
     icon: "bi-cart3"
-    description: "Tiendas online optimizadas para conversión, SEO y la mejor experiencia de compra"
+    description: "Tiendas online optimizadas para conversión, SEO y la mejor experiencia de compra."
   - title: "Consultoría Tech"
     icon: "bi-lightbulb"
-    description: "Asesoramiento técnico experto para llevar tu proyecto digital al siguiente nivel"
+    description: "Asesoramiento técnico experto para llevar tu proyecto digital al siguiente nivel."
+
+# Servicios de Marketing Digital
+services_marketing:
+  - title: "Posicionamiento SEO"
+    icon: "bi-search"
+    description: "Estrategias de SEO on-page y off-page para posicionar tu sitio en los primeros resultados de Google."
+  - title: "Google Ads"
+    icon: "bi-google"
+    description: "Campañas de pago por clic diseñadas para maximizar el retorno de inversión y generar leads calificados."
+  - title: "Auditoría Digital"
+    icon: "bi-clipboard-data"
+    description: "Análisis completo de tu presencia online para detectar oportunidades de mejora y crecimiento."
+  - title: "Estrategia de Contenidos"
+    icon: "bi-bar-chart-steps"
+    description: "Planificación y creación de contenido orientado a atraer, convertir y fidelizar a tu audiencia ideal."
 
 # Stack de tecnologías (hero)
 tech_stack:
@@ -50,7 +65,7 @@ tech_stack:
   - "JavaScript"
   - "React"
   - "Node.js"
-  - "Jekyll"
+  - "Python"
 
 # Build settings
 markdown: kramdown
