@@ -24,14 +24,16 @@
         <div class="col-sm-6 col-lg-3"
              data-aos="fade-up"
              data-aos-delay="{{ forloop.index | times: 70 }}">
-          <div class="service-card">
-            <div class="service-icon-wrap">
-              <i class="bi {{ service.icon }}"></i>
+          <a class="service-card-link" href="{{ service.url | relative_url }}" aria-label="Ver {{ service.title }}">
+            <div class="service-card">
+              <div class="service-icon-wrap">
+                <i class="bi {{ service.icon }}"></i>
+              </div>
+              <h3 class="service-title">{{ service.title }}</h3>
+              <p class="service-desc">{{ service.description }}</p>
+              <span class="service-arrow"><i class="bi bi-arrow-up-right"></i></span>
             </div>
-            <h3 class="service-title">{{ service.title }}</h3>
-            <p class="service-desc">{{ service.description }}</p>
-            <span class="service-arrow"><i class="bi bi-arrow-up-right"></i></span>
-          </div>
+          </a>
         </div>
         {% endfor %}
       </div>
@@ -55,14 +57,16 @@
         <div class="col-sm-6 col-lg-3"
              data-aos="fade-up"
              data-aos-delay="{{ forloop.index | times: 70 }}">
-          <div class="service-card service-card-mkt">
-            <div class="service-icon-wrap service-icon-mkt">
-              <i class="bi {{ service.icon }}"></i>
+          <a class="service-card-link" href="{{ service.url | relative_url }}" aria-label="Ver {{ service.title }}">
+            <div class="service-card service-card-mkt">
+              <div class="service-icon-wrap service-icon-mkt">
+                <i class="bi {{ service.icon }}"></i>
+              </div>
+              <h3 class="service-title">{{ service.title }}</h3>
+              <p class="service-desc">{{ service.description }}</p>
+              <span class="service-arrow"><i class="bi bi-arrow-up-right"></i></span>
             </div>
-            <h3 class="service-title">{{ service.title }}</h3>
-            <p class="service-desc">{{ service.description }}</p>
-            <span class="service-arrow"><i class="bi bi-arrow-up-right"></i></span>
-          </div>
+          </a>
         </div>
         {% endfor %}
       </div>

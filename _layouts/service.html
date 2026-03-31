@@ -1,0 +1,63 @@
+---
+layout: default
+---
+
+<section class="service-detail-hero">
+  <div class="container">
+    <a class="service-detail-back" href="{{ '/#services' | relative_url }}">
+      <i class="bi bi-arrow-left"></i> Volver a servicios
+    </a>
+    <span class="service-detail-chip">{{ page.category }}</span>
+    <h1 class="service-detail-title">{{ page.title }}</h1>
+    {% if page.summary %}
+    <p class="service-detail-summary">{{ page.summary }}</p>
+    {% endif %}
+  </div>
+</section>
+
+<section class="service-detail-content section-dark">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-5">
+        <div class="service-detail-card">
+          <h2 class="service-detail-h2">Que incluye</h2>
+          {% if page.deliverables %}
+          <ul class="service-detail-list">
+            {% for item in page.deliverables %}
+            <li>{{ item }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="col-lg-7">
+        <div class="service-detail-card">
+          <h2 class="service-detail-h2">Proceso de trabajo</h2>
+          {% if page.process %}
+          <ol class="service-process-list">
+            {% for step in page.process %}
+            <li>
+              <h3>{{ step.title }}</h3>
+              <p>{{ step.detail }}</p>
+            </li>
+            {% endfor %}
+          </ol>
+          {% endif %}
+
+          <div class="service-detail-body">
+            {{ content }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="service-detail-cta">
+      <h3>Te interesa este servicio</h3>
+      <p>Contame tu objetivo y te propongo una hoja de ruta con tiempos, alcance y presupuesto.</p>
+      <a href="{{ '/#contact' | relative_url }}" class="btn btn-primary btn-lg">
+        Solicitar propuesta <i class="bi bi-arrow-right ms-2"></i>
+      </a>
+    </div>
+  </div>
+</section>

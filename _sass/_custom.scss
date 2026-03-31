@@ -403,6 +403,12 @@ img { max-width: 100%; height: auto; }
   }
 }
 
+.service-card-link {
+  display: block;
+  height: 100%;
+  text-decoration: none;
+}
+
 .service-card {
   background: $c-black-3;
   border: 1px solid $c-black-4;
@@ -570,6 +576,127 @@ $c-mkt-glow:   rgba(255, 107, 43, .15);
   background: rgba($c-mkt, .1);
   border-color: rgba($c-mkt, .22);
   color: $c-mkt;
+}
+
+// =============================================
+// SERVICE DETAIL PAGE
+// =============================================
+.service-detail-hero {
+  padding: 140px 0 50px;
+  background: $c-black-1;
+}
+
+.service-detail-back {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  color: $c-blue-lt;
+  text-decoration: none;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.service-detail-chip {
+  display: inline-block;
+  font-size: .75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: $c-blue-lt;
+  background: rgba($c-blue, .12);
+  border: 1px solid rgba($c-blue, .25);
+  border-radius: 999px;
+  padding: .35rem .7rem;
+  margin-bottom: 1rem;
+}
+
+.service-detail-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: $c-white;
+  margin-bottom: .75rem;
+}
+
+.service-detail-summary {
+  color: $c-gray;
+  max-width: 760px;
+  font-size: 1.02rem;
+  margin: 0;
+}
+
+.service-detail-content {
+  padding: 2.5rem 0 5rem;
+}
+
+.service-detail-card {
+  height: 100%;
+  background: $c-black-3;
+  border: 1px solid $c-black-4;
+  border-radius: 18px;
+  padding: 1.5rem;
+}
+
+.service-detail-h2 {
+  font-size: 1.25rem;
+  color: $c-white;
+  margin-bottom: 1rem;
+}
+
+.service-detail-list {
+  margin: 0;
+  padding-left: 1.1rem;
+
+  li {
+    color: $c-gray;
+    margin-bottom: .55rem;
+  }
+}
+
+.service-process-list {
+  margin: 0;
+  padding-left: 1.2rem;
+
+  li {
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    font-size: 1.02rem;
+    color: $c-white;
+    margin-bottom: .25rem;
+  }
+
+  p {
+    color: $c-gray;
+    margin: 0;
+  }
+}
+
+.service-detail-body {
+  margin-top: 1.4rem;
+  color: $c-gray;
+
+  h2, h3, h4 {
+    color: $c-white;
+  }
+}
+
+.service-detail-cta {
+  margin-top: 2.2rem;
+  background: $c-black-3;
+  border: 1px solid $c-black-4;
+  border-radius: 18px;
+  padding: 1.8rem;
+  text-align: center;
+
+  h3 {
+    color: $c-white;
+    margin-bottom: .45rem;
+  }
+
+  p {
+    color: $c-gray;
+    margin-bottom: 1rem;
+  }
 }
 
 // =============================================
@@ -1338,6 +1465,11 @@ body.theme-light {
   .about-section,
   .portfolio-section,
   .contact-section { padding: $section-y-sm 0; }
+
+  .service-detail-hero { padding: 120px 0 38px; }
+  .service-detail-content { padding: 1.8rem 0 3.5rem; }
+  .service-detail-card,
+  .service-detail-cta { padding: 1.2rem; }
 
   .hero-title { font-size: 2.1rem; }
 
