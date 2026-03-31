@@ -12,6 +12,12 @@ layout: default
     {% if page.summary %}
     <p class="service-detail-summary">{{ page.summary }}</p>
     {% endif %}
+
+    {% if page.image %}
+    <div class="service-detail-media-wrap">
+      <img class="service-detail-media" src="{{ page.image | relative_url }}" alt="{{ page.title }}" loading="lazy">
+    </div>
+    {% endif %}
   </div>
 </section>
 

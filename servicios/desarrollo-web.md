@@ -4,6 +4,7 @@ title: "Desarrollo Web"
 category: "Desarrollo & Tecnologia"
 permalink: /servicios/desarrollo-web/
 summary: "Diseno y desarrollo de sitios web modernos, rapidos y adaptados a tus objetivos comerciales."
+image: "/assets/images/services/desarrollo-web.jpg"
 deliverables:
   - "Arquitectura de informacion y estructura de paginas"
   - "Diseno responsive optimizado para desktop y movil"

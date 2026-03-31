@@ -4,6 +4,7 @@ title: "Estrategia de Contenidos"
 category: "Marketing Digital"
 permalink: /marketing/estrategia-contenidos/
 summary: "Plan editorial y de conversion para atraer audiencia correcta y transformarla en oportunidades reales."
+image: "/assets/images/services/estrategia-contenidos.jpg"
 deliverables:
   - "Framework de contenidos por etapa del embudo"
   - "Calendario editorial con temas prioritarios"

@@ -4,6 +4,7 @@ title: "Posicionamiento SEO"
 category: "Marketing Digital"
 permalink: /marketing/posicionamiento-seo/
 summary: "Estrategia SEO integral para aumentar visibilidad organica y atraer trafico calificado."
+image: "/assets/images/services/posicionamiento-seo.jpg"
 deliverables:
   - "Auditoria SEO tecnica y de contenidos"
   - "Investigacion de palabras clave por intencion"

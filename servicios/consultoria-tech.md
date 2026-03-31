@@ -4,6 +4,7 @@ title: "Consultoria Tech"
 category: "Desarrollo & Tecnologia"
 permalink: /servicios/consultoria-tech/
 summary: "Acompanamiento tecnico para tomar decisiones solidas en producto, arquitectura y crecimiento digital."
+image: "/assets/images/services/consultoria-tech.jpg"
 deliverables:
   - "Auditoria tecnica de sitio o aplicacion"
   - "Hoja de ruta priorizada por impacto"

@@ -4,6 +4,7 @@ title: "Auditoria Digital"
 category: "Marketing Digital"
 permalink: /marketing/auditoria-digital/
 summary: "Evaluacion completa de tu ecosistema digital para detectar mejoras concretas y accionables."
+image: "/assets/images/services/auditoria-digital.jpg"
 deliverables:
   - "Analisis de sitio, funnels y activos de captacion"
   - "Revision de canales pagos y organicos"

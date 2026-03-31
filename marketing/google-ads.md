@@ -4,6 +4,7 @@ title: "Google Ads"
 category: "Marketing Digital"
 permalink: /marketing/google-ads/
 summary: "Campanas de Google Ads enfocadas en resultados, con control de costos y mejora del retorno."
+image: "/assets/images/services/google-ads.jpg"
 deliverables:
   - "Estructura de campanas por objetivo"
   - "Configuracion de conversiones y medicion"
