@@ -2091,7 +2091,7 @@ body.theme-light {
 
 // ─── WHATSAPP CONTACT BUTTON ─────────────────────────────────────────────
 .btn-whatsapp {
-  background: #25d366;
+  background: #3a9e6a;
   color: #fff;
   border: none;
   display: inline-flex;
@@ -2099,17 +2099,17 @@ body.theme-light {
   justify-content: center;
 
   &:hover, &:focus-visible {
-    background: #1ebe5d;
+    background: #32885b;
     color: #fff;
-    box-shadow: 0 4px 18px rgba(37, 211, 102, .40);
+    box-shadow: 0 4px 14px rgba(58, 158, 106, .30);
   }
 }
 
 .social-btn-wa {
-  background: rgba(37, 211, 102, .15) !important;
-  color: #25d366 !important;
-  border-color: rgba(37, 211, 102, .3) !important;
-  &:hover { background: rgba(37, 211, 102, .28) !important; }
+  background: rgba(58, 158, 106, .12) !important;
+  color: #3a9e6a !important;
+  border-color: rgba(58, 158, 106, .25) !important;
+  &:hover { background: rgba(58, 158, 106, .22) !important; }
 }
 
 // ─── WHATSAPP FLOATING BUTTON ──────────────────────────────────────────────
@@ -2124,15 +2124,15 @@ body.theme-light {
   width: 52px;
   height: 52px;
   border-radius: 50%;
-  background: #25d366;
+  background: #3a9e6a;
   color: #fff;
-  box-shadow: 0 4px 18px rgba(37, 211, 102, .45);
+  box-shadow: 0 4px 14px rgba(58, 158, 106, .35);
   transition: transform .2s ease, box-shadow .2s ease;
   text-decoration: none;
 
   &:hover, &:focus-visible {
     transform: scale(1.1);
-    box-shadow: 0 6px 24px rgba(37, 211, 102, .65);
+    box-shadow: 0 6px 20px rgba(58, 158, 106, .50);
     color: #fff;
   }
 }
