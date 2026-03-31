@@ -80,12 +80,16 @@ AOS.init({
 })();
 
 /* ---------- Smooth scroll + cierre de menú móvil ---------- */
-document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+document.querySelectorAll('a[href*="#"]').forEach(function (anchor) {
   anchor.addEventListener('click', function (e) {
-    const href = this.getAttribute('href');
-    if (href === '#') return;
+    const rawHref = this.getAttribute('href');
+    if (!rawHref || rawHref === '#') return;
 
-    const target = document.querySelector(href);
+    const url = new URL(rawHref, window.location.href);
+    const isSamePage = url.pathname === window.location.pathname && url.origin === window.location.origin;
+    if (!isSamePage || !url.hash) return;
+
+    const target = document.querySelector(url.hash);
     if (!target) return;
 
     e.preventDefault();
@@ -111,9 +115,11 @@ document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
       entries.forEach(function (entry) {
         if (!entry.isIntersecting) return;
         navLinks.forEach(function (link) {
+          const href = link.getAttribute('href') || '';
+          const hash = href.includes('#') ? href.slice(href.indexOf('#')) : href;
           link.classList.toggle(
             'active',
-            link.getAttribute('href') === '#' + entry.target.id
+            hash === '#' + entry.target.id
           );
         });
       });

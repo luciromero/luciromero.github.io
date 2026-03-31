@@ -3,14 +3,20 @@
 // =============================================
 *, *::before, *::after { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  width: 100%;
+  overflow-x: clip;
+}
 
 body {
   background-color: $c-black-1;
   color: $c-white-2;
   font-family: $font-sans;
   line-height: 1.75;
-  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
 }
 
 ::selection {
@@ -67,6 +73,10 @@ img { max-width: 100%; height: auto; }
 #mainNav {
   padding: 1.1rem 0;
   transition: padding .3s, background .3s, box-shadow .3s;
+  background: rgba($c-black-2, .78);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba($c-black-4, .85);
 
   // En móvil siempre fondo sólido (el menú desplegado queda transparente sin esto)
   @media (max-width: 991.98px) {
@@ -1650,6 +1660,10 @@ body.theme-light {
   }
 
   #mainNav {
+    background: rgba(255, 255, 255, .88);
+    border-bottom: 1px solid #d6dfec;
+    box-shadow: 0 8px 25px rgba(15, 23, 42, .06);
+
     @media (max-width: 991.98px) {
       background: #ffffff !important;
       border-bottom: 1px solid #d6dfec;
@@ -2029,6 +2043,19 @@ body.theme-light {
 }
 
 @media (max-width: 767.98px) {
+  body[data-page-layout='service'],
+  .hero-section,
+  .services-section,
+  .about-section,
+  .portfolio-section,
+  .contact-section,
+  .service-detail-hero,
+  .service-detail-content {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
   .services-section,
   .about-section,
   .portfolio-section,
