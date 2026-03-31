@@ -72,6 +72,8 @@ img { max-width: 100%; height: auto; }
   @media (max-width: 991.98px) {
     background: $c-black-2 !important;
     border-bottom: 1px solid $c-black-4;
+    // Sin transición de fondo → el navbar aparece sólido de inmediato al cargar
+    transition: padding .3s, box-shadow .3s;
 
     // El colapso no necesita animación extra – Bootstrap ya lo maneja
     .navbar-collapse {
@@ -1317,9 +1319,18 @@ body.theme-light {
   // NO ocultamos tech-float aquí — solo en móvil pequeño (ver abajo)
 }
 
-// Solo en pantallas muy pequeñas ocultar los badges flotantes para evitar overflow
+// Móvil xs: hero sin margen excesivo + badges flotantes visibles
 @media (max-width: 575.98px) {
-  .tech-float { display: none; }
+  // Reducir el espacio superior del hero en pantallas pequeñas
+  .hero-section { padding-top: 65px; }
+  .hero-section .row { padding-top: .5rem !important; }
+
+  // Dar margen lateral a la tarjeta "Sobre mí" para que los badges
+  // que sobresalen no se corten por el borde del viewport
+  .about-card-main {
+    margin-left: 1.25rem;
+    margin-right: 1.25rem;
+  }
 }
 
 @media (max-width: 767.98px) {
