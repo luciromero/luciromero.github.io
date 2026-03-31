@@ -19,6 +19,42 @@ process:
     detail: "Configuro la tienda, impuestos, pagos y pruebas de conversion."
   - title: "Lanzamiento y optimizacion"
     detail: "Monitoreo indicadores y aplico mejoras continuas en rendimiento y ventas."
+plans:
+  - name: "Básico"
+    price_from: 600
+    currency: "USD"
+    description: "Tienda lista para vender con catálogo pequeño y pago online."
+    highlight: false
+    features:
+      - "Hasta 50 productos"
+      - "1 pasarela de pago"
+      - "SEO básico de tienda"
+      - "Diseño responsive"
+      - "Panel de gestión de pedidos"
+  - name: "Estándar"
+    price_from: 1200
+    currency: "USD"
+    description: "Tienda escalable con múltiples pagos, analítica y automatizaciones."
+    highlight: true
+    features:
+      - "Hasta 500 productos"
+      - "Múltiples métodos de pago"
+      - "Integración email marketing"
+      - "Panel de analítica de ventas"
+      - "Gestión de descuentos y cupones"
+      - "Soporte 30 días post-lanzamiento"
+  - name: "Profesional"
+    price_from: 2500
+    currency: "USD"
+    description: "E-commerce de alto volumen con estrategia de conversión incluida."
+    highlight: false
+    features:
+      - "Productos ilimitados"
+      - "Integraciones ERP / CRM"
+      - "Optimización del funnel de compra"
+      - "Estrategia de conversión incluida"
+      - "Reportes avanzados"
+      - "Soporte 3 meses post-lanzamiento"
 ---
 
 Una tienda rentable no depende solo del diseno: necesita estrategia, datos y ejecucion tecnica consistente.

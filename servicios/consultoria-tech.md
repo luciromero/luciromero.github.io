@@ -19,6 +19,39 @@ process:
     detail: "Entrego pasos concretos, tiempos estimados y metricas de exito."
   - title: "Acompanamiento"
     detail: "Doy soporte para implementar mejoras y medir resultados."
+plans:
+  - name: "Básico"
+    price_from: 200
+    currency: "USD"
+    description: "Auditoría puntual con recomendaciones accionables."
+    highlight: false
+    features:
+      - "Auditoría técnica del sitio o app"
+      - "Informe de hallazgos y prioridades"
+      - "1 sesión de presentación de resultados"
+      - "Checklist de mejoras inmediatas"
+  - name: "Estándar"
+    price_from: 500
+    currency: "USD"
+    description: "Análisis profundo con hoja de ruta y seguimiento."
+    highlight: true
+    features:
+      - "Auditoría técnica completa"
+      - "Análisis de competencia digital"
+      - "Roadmap priorizado a 3 meses"
+      - "3 sesiones de seguimiento"
+      - "Revisión de implementación"
+  - name: "Profesional"
+    price_from: 1000
+    currency: "USD"
+    description: "Consultoría continua con soporte mensual y métricas de impacto."
+    highlight: false
+    features:
+      - "Todo lo del plan Estándar"
+      - "Roadmap de 6 meses"
+      - "Soporte mensual vía reunión"
+      - "Revisión de código o arquitectura"
+      - "Métricas de seguimiento personalizadas"
 ---
 
 Este servicio funciona muy bien cuando necesitas claridad tecnica antes de invertir en desarrollo o marketing.

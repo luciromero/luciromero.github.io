@@ -72,11 +72,42 @@ layout: default
       </div>
     </div>
 
+    {% if page.plans %}
+    <div class="service-plans" data-aos="fade-up">
+      <h2 class="service-plans-title">Planes y <span class="gradient-text">precios</span></h2>
+      <p class="service-plans-sub">Elegí el plan que se adapta a tu objetivo. Todos los precios son de referencia en USD.</p>
+      <div class="row g-4 justify-content-center">
+        {% for plan in page.plans %}
+        <div class="col-sm-10 col-md-6 col-lg-4">
+          <div class="plan-card {% if plan.highlight %}plan-card-featured{% endif %} {% if is_marketing %}plan-card-mkt{% endif %}">
+            {% if plan.highlight %}<span class="plan-badge">Más elegido</span>{% endif %}
+            <div class="plan-name">{{ plan.name }}</div>
+            <div class="plan-price">
+              <span class="plan-from">desde</span>
+              <span class="plan-amount">{{ plan.currency | default: 'USD' }} {{ plan.price_from }}</span>
+              {% if plan.price_period %}<span class="plan-period">/ {{ plan.price_period }}</span>{% endif %}
+            </div>
+            {% if plan.description %}<p class="plan-desc">{{ plan.description }}</p>{% endif %}
+            <ul class="plan-features">
+              {% for feat in plan.features %}
+              <li><i class="bi bi-check2"></i> {{ feat }}</li>
+              {% endfor %}
+            </ul>
+            <a href="{{ '/#contact' | relative_url }}" class="btn {% if plan.highlight %}btn-primary{% else %}btn-outline-light{% endif %} w-100 mt-auto">
+              Solicitar este plan <i class="bi bi-arrow-right ms-1"></i>
+            </a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+
     <div class="service-detail-cta">
-      <h3>Te interesa este servicio</h3>
-      <p>Contame tu objetivo y te propongo una hoja de ruta con tiempos, alcance y presupuesto.</p>
+      <h3>¿Necesitás algo a medida?</h3>
+      <p>Si ningún plan se ajusta exactamente a lo que buscás, puedo armar una propuesta personalizada.</p>
       <a href="{{ '/#contact' | relative_url }}" class="btn btn-primary btn-lg">
-        Solicitar propuesta <i class="bi bi-arrow-right ms-2"></i>
+        Hablar del proyecto <i class="bi bi-arrow-right ms-2"></i>
       </a>
     </div>
   </div>

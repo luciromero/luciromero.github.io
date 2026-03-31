@@ -26,9 +26,6 @@
              data-aos-delay="{{ forloop.index | times: 70 }}">
           <a class="service-card-link" href="{{ service.url | relative_url }}" aria-label="Ver {{ service.title }}">
             <div class="service-card">
-              {% if service.image %}
-              <img class="service-thumb" src="{{ service.image | relative_url }}" alt="{{ service.title }}" loading="lazy">
-              {% endif %}
               <div class="service-icon-wrap">
                 <i class="bi {{ service.icon }}"></i>
               </div>
@@ -62,9 +59,6 @@
              data-aos-delay="{{ forloop.index | times: 70 }}">
           <a class="service-card-link" href="{{ service.url | relative_url }}" aria-label="Ver {{ service.title }}">
             <div class="service-card service-card-mkt">
-              {% if service.image %}
-              <img class="service-thumb" src="{{ service.image | relative_url }}" alt="{{ service.title }}" loading="lazy">
-              {% endif %}
               <div class="service-icon-wrap service-icon-mkt">
                 <i class="bi {{ service.icon }}"></i>
               </div>

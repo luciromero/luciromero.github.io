@@ -823,6 +823,170 @@ body[data-page-layout='service'] #mainNav {
   }
 }
 
+// =============================================
+// SERVICE PLANS / PRICING
+// =============================================
+.service-plans {
+  margin-top: 3rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid $c-black-4;
+}
+
+.service-plans-title {
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  color: $c-white;
+  margin-bottom: .5rem;
+}
+
+.service-plans-sub {
+  color: $c-gray;
+  font-size: .95rem;
+  margin-bottom: 2rem;
+}
+
+.plan-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: $c-black-3;
+  border: 1px solid $c-black-4;
+  border-radius: 20px;
+  padding: 1.8rem 1.6rem;
+  transition: transform .3s, border-color .3s, box-shadow .3s;
+
+  &:hover {
+    transform: translateY(-4px);
+    border-color: rgba($c-blue, .35);
+    box-shadow: 0 20px 50px rgba(0,0,0,.25);
+  }
+}
+
+.plan-card-featured {
+  border-color: rgba($c-blue, .55);
+  background: linear-gradient(160deg, rgba($c-blue,.08) 0%, $c-black-3 60%);
+  box-shadow: 0 0 0 1px rgba($c-blue, .18), 0 16px 48px rgba($c-blue,.12);
+
+  &:hover {
+    border-color: rgba($c-blue, .75);
+    box-shadow: 0 0 0 1px rgba($c-blue, .32), 0 24px 60px rgba($c-blue,.18);
+  }
+}
+
+.plan-card-mkt.plan-card-featured {
+  border-color: rgba($c-mkt, .55);
+  background: linear-gradient(160deg, rgba($c-mkt,.08) 0%, $c-black-3 60%);
+  box-shadow: 0 0 0 1px rgba($c-mkt, .18), 0 16px 48px rgba($c-mkt,.12);
+
+  &:hover {
+    border-color: rgba($c-mkt, .75);
+    box-shadow: 0 0 0 1px rgba($c-mkt, .32), 0 24px 60px rgba($c-mkt,.18);
+  }
+}
+
+.plan-badge {
+  display: inline-block;
+  position: absolute;
+  top: -13px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: $c-blue-grad;
+  color: $c-white;
+  font-size: .72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .09em;
+  padding: .25rem .85rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.plan-card-mkt .plan-badge {
+  background: $c-mkt-grad;
+}
+
+.plan-name {
+  font-size: .72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: $c-gray;
+  margin-bottom: .6rem;
+}
+
+.plan-price {
+  margin-bottom: 1rem;
+}
+
+.plan-from {
+  display: block;
+  font-size: .78rem;
+  color: $c-gray;
+  margin-bottom: .1rem;
+}
+
+.plan-amount {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: $c-white;
+  font-family: $font-mono;
+  background: $c-blue-grad;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.plan-card-mkt .plan-amount {
+  background: $c-mkt-grad;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.plan-period {
+  font-size: .82rem;
+  color: $c-gray;
+  margin-left: .2rem;
+  -webkit-text-fill-color: initial;
+}
+
+.plan-desc {
+  font-size: .88rem;
+  color: $c-gray;
+  margin-bottom: .9rem;
+  line-height: 1.6;
+}
+
+.plan-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.4rem;
+  flex: 1;
+
+  li {
+    display: flex;
+    align-items: flex-start;
+    gap: .55rem;
+    font-size: .88rem;
+    color: $c-gray;
+    padding: .35rem 0;
+    border-bottom: 1px solid rgba($c-white, .05);
+
+    &:last-child { border-bottom: none; }
+
+    i {
+      color: $c-blue-lt;
+      font-size: .95rem;
+      flex-shrink: 0;
+      margin-top: .1rem;
+    }
+  }
+}
+
+.plan-card-mkt .plan-features li i {
+  color: $c-mkt;
+}
+
 .service-detail-cta {
   margin-top: 2.2rem;
   background: $c-black-3;
@@ -1614,6 +1778,49 @@ body.theme-light {
     background: rgba(15, 23, 42, .04);
     border-bottom-color: #d6dfec;
   }
+
+  // Planes / pricing en tema claro
+  .service-plans {
+    border-top-color: #d6dfec;
+  }
+
+  .service-plans-title { color: #0f172a; }
+  .service-plans-sub   { color: #64748b; }
+
+  .plan-card {
+    background: #ffffff;
+    border-color: #d6dfec;
+  }
+
+  .plan-card-featured {
+    border-color: rgba(#0052cc, .45);
+    background: linear-gradient(160deg, rgba(#0052cc,.05) 0%, #ffffff 60%);
+    box-shadow: 0 0 0 1px rgba(#0052cc,.15), 0 16px 48px rgba(#0052cc,.07);
+  }
+
+  .plan-card-mkt.plan-card-featured {
+    border-color: rgba(#ff6b2b,.45);
+    background: linear-gradient(160deg, rgba(#ff6b2b,.05) 0%, #ffffff 60%);
+    box-shadow: 0 0 0 1px rgba(#ff6b2b,.15), 0 16px 48px rgba(#ff6b2b,.07);
+  }
+
+  .plan-name  { color: #94a3b8; }
+  .plan-from  { color: #94a3b8; }
+
+  .plan-amount {
+    background: linear-gradient(135deg, #0052cc, #0078ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .plan-features li {
+    color: #334155;
+    border-bottom-color: rgba(15,23,42,.07);
+    i { color: #0052cc; }
+  }
+
+  .plan-card-mkt .plan-features li i { color: #e05520; }
 
   .btn-outline-light {
     color: #0f172a;

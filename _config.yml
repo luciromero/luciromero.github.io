@@ -17,7 +17,7 @@ baseurl: ""
 
 # Autor
 author:
-  name: "Luciana Romero"
+  name: "Luciana Romero"it 
   initials: "LR"
   email: "contacto@tudominio.com"
   location: "Buenos Aires, Argentina"
@@ -39,12 +39,12 @@ services_web:
   - title: "Aplicaciones Web"
     icon: "bi-window-stack"
     url: "/servicios/aplicaciones-web/"
-    image: "/assets/images/services/aplicaciones-web.jpg"
+    image: "/assets/images/services/aplicaciones-web.png"
     description: "Apps web complejas y escalables usando las últimas tecnologías del mercado."
   - title: "E-Commerce"
     icon: "bi-cart3"
     url: "/servicios/ecommerce/"
-    image: "/assets/images/services/ecommerce.jpg"
+    image: "/assets/images/services/ecommerce.png"
     description: "Tiendas online optimizadas para conversión, SEO y la mejor experiencia de compra."
   - title: "Consultoría Tech"
     icon: "bi-lightbulb"
