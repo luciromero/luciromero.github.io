@@ -152,6 +152,12 @@ permalink: /admin/presupuesto/
     .actions, .add-row-btn, .delete-row { display: none !important; }
   }
 
+  body.exporting-pdf .actions,
+  body.exporting-pdf .add-row-btn,
+  body.exporting-pdf .delete-row {
+    display: none !important;
+  }
+
   @media (max-width: 900px) {
     .header, .parties, .dates-row, .terms-grid, .sig-row { grid-template-columns: 1fr; display: grid; }
     .header { display: block; }
@@ -165,6 +171,7 @@ permalink: /admin/presupuesto/
     <div id="status-toggle" class="status-badge status-borrador" onclick="cycleStatus()">● Borrador</div>
     <a class="btn btn-outline" href="{{ '/' | relative_url }}">← Volver al sitio</a>
     <button class="btn btn-primary" onclick="window.print()">⬇ Imprimir / PDF</button>
+    <button class="btn btn-outline" onclick="downloadTemplatePDF()">⬇ Descargar plantilla PDF</button>
     <button class="btn btn-outline" onclick="resetDoc()">↺ Nuevo</button>
     <button class="btn btn-outline" onclick="logoutAdmin()">Salir</button>
   </div>
@@ -309,6 +316,8 @@ permalink: /admin/presupuesto/
 
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 <script>
   const defaultMain = [
     { id: 0, name: 'Diseño Web', desc: 'Diseño y desarrollo del sitio web completo, responsive y optimizado.' },
@@ -452,6 +461,37 @@ permalink: /admin/presupuesto/
       // no-op
     }
     window.location.href = '{{ "/admin/login/" | relative_url }}';
+  }
+
+  async function downloadTemplatePDF() {
+    const source = document.querySelector('.wrap');
+    if (!source) return;
+
+    if (typeof html2pdf === 'undefined') {
+      alert('No se pudo cargar el exportador de PDF.');
+      return;
+    }
+
+    const docNum = (document.getElementById('doc-num')?.textContent || 'presupuesto').trim().replace(/\s+/g, '-');
+    const fileName = 'presupuesto-' + docNum + '.pdf';
+
+    document.body.classList.add('exporting-pdf');
+
+    try {
+      await html2pdf()
+        .set({
+          margin: [8, 8, 10, 8],
+          filename: fileName,
+          image: { type: 'jpeg', quality: 0.98 },
+          html2canvas: { scale: 2, useCORS: true, scrollY: 0 },
+          jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+          pagebreak: { mode: ['avoid-all', 'css', 'legacy'] },
+        })
+        .from(source)
+        .save();
+    } finally {
+      document.body.classList.remove('exporting-pdf');
+    }
   }
 
   const today = new Date();
