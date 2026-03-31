@@ -2,6 +2,44 @@
    main.js – Página personal con Jekyll
    ============================================= */
 
+/* ---------- Tema claro/oscuro ---------- */
+(function () {
+  const body = document.body;
+  const toggleBtn = document.getElementById('themeToggle');
+  const storageKey = 'site-theme';
+
+  const applyTheme = function (theme) {
+    const isLight = theme === 'light';
+    body.classList.toggle('theme-light', isLight);
+    body.classList.toggle('theme-dark', !isLight);
+    document.documentElement.setAttribute('data-bs-theme', isLight ? 'light' : 'dark');
+
+    if (!toggleBtn) return;
+    const icon = toggleBtn.querySelector('i');
+    const text = toggleBtn.querySelector('.theme-toggle-text');
+
+    if (icon) {
+      icon.className = isLight ? 'bi bi-moon-stars-fill' : 'bi bi-sun-fill';
+    }
+    if (text) {
+      text.textContent = isLight ? 'Oscuro' : 'Claro';
+    }
+
+    toggleBtn.setAttribute('aria-label', isLight ? 'Activar tema oscuro' : 'Activar tema claro');
+    toggleBtn.setAttribute('title', isLight ? 'Activar tema oscuro' : 'Activar tema claro');
+  };
+
+  const initialTheme = localStorage.getItem(storageKey) || 'dark';
+  applyTheme(initialTheme);
+
+  if (!toggleBtn) return;
+  toggleBtn.addEventListener('click', function () {
+    const nextTheme = body.classList.contains('theme-light') ? 'dark' : 'light';
+    localStorage.setItem(storageKey, nextTheme);
+    applyTheme(nextTheme);
+  });
+})();
+
 /* ---------- AOS (Animate on Scroll) ---------- */
 AOS.init({
   duration: 780,

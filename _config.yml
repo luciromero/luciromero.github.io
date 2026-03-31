@@ -1,8 +1,8 @@
 # =============================================
 # SITE SETTINGS — edita con tus datos reales
 # =============================================
-title: "Tu Nombre"
-tagline: "Full Stack Developer"
+title: "Luciana Romero"
+tagline: "Desarrolladora Web Full Stack"
 description: "Desarrollo web profesional y soluciones digitales a medida para tu negocio."
 
 # URL de tu GitHub Pages
@@ -17,11 +17,11 @@ baseurl: "/pagina-personal"
 
 # Autor
 author:
-  name: "Tu Nombre"
-  initials: "TN"
+  name: "Luciana Romero"
+  initials: "LR"
   email: "contacto@tudominio.com"
   location: "Buenos Aires, Argentina"
-  bio: "Desarrollador web Full Stack con pasión por crear experiencias digitales excepcionales"
+  bio: "Desarrolladora web Full Stack con pasión por crear experiencias digitales excepcionales"
 
 # Redes sociales
 social:

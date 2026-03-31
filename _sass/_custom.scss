@@ -121,6 +121,28 @@ img { max-width: 100%; height: auto; }
     &:hover { opacity: .88; transform: translateY(-1px); }
   }
 
+  .btn-theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: .45rem;
+    border-radius: 50px;
+    border: 1px solid rgba($c-white, .22);
+    color: $c-white-2;
+    background: rgba($c-white, .04);
+    padding: .45rem .9rem;
+    font-size: .86rem;
+    font-weight: 600;
+    transition: border-color .25s, color .25s, background .25s;
+
+    i { font-size: .9rem; }
+
+    &:hover {
+      border-color: rgba($c-blue, .55);
+      color: $c-white;
+      background: rgba($c-blue, .16);
+    }
+  }
+
   .navbar-toggler {
     border-color: rgba($c-blue, .5);
     .navbar-toggler-icon {
@@ -872,6 +894,126 @@ img { max-width: 100%; height: auto; }
 
 .btn-outline-light {
   &:hover { background: rgba($c-white, .07) !important; }
+}
+
+// =============================================
+// LIGHT THEME OVERRIDES
+// =============================================
+body.theme-light {
+  background-color: #f4f7fc;
+  color: #0f172a;
+
+  .hero-section,
+  .about-section,
+  .contact-section {
+    background-color: #f4f7fc;
+  }
+
+  .section-dark,
+  .services-section,
+  .portfolio-section,
+  .site-footer {
+    background-color: #e9eff8 !important;
+  }
+
+  #mainNav {
+    &.scrolled {
+      background: rgba(255, 255, 255, .9);
+      border-bottom: 1px solid #d6dfec;
+      box-shadow: 0 8px 25px rgba(15, 23, 42, .08);
+    }
+
+    .navbar-brand,
+    .nav-link,
+    .btn-theme-toggle {
+      color: #0f172a !important;
+    }
+
+    .btn-theme-toggle {
+      border-color: #c7d4e6;
+      background: rgba(255, 255, 255, .8);
+
+      &:hover {
+        background: rgba($c-blue, .08);
+        border-color: rgba($c-blue, .45);
+      }
+    }
+  }
+
+  .section-title,
+  .hero-title,
+  .service-title,
+  .port-title,
+  .contact-value,
+  .skill-name,
+  .footer-brand {
+    color: #0f172a;
+  }
+
+  .section-subtitle,
+  .hero-subtitle,
+  .about-text,
+  .service-desc,
+  .port-desc,
+  .contact-label,
+  .footer-tagline,
+  .footer-copy,
+  .stack-label,
+  .site-footer .footer-nav a {
+    color: #475569;
+  }
+
+  .service-card,
+  .about-card-main,
+  .stat-card,
+  .port-card,
+  .port-card-sm,
+  .code-window,
+  .contact-form .form-control {
+    background: #ffffff;
+    border-color: #d6dfec;
+    color: #0f172a;
+  }
+
+  .contact-form {
+    .form-floating > label { color: #64748b; }
+    .form-control:focus {
+      background: #ffffff;
+      color: #0f172a;
+    }
+  }
+
+  .tech-float {
+    background: #ffffff;
+    border-color: rgba($c-blue, .3);
+  }
+
+  .social-btn {
+    background: rgba(15, 23, 42, .04);
+    border-color: #d6dfec;
+    color: #334155;
+  }
+
+  .hero-stack .stack-badge {
+    background: rgba(15, 23, 42, .04);
+    border-color: #d6dfec;
+    color: #334155;
+  }
+
+  .code-window .code-window-bar {
+    background: rgba(15, 23, 42, .04);
+    border-bottom-color: #d6dfec;
+  }
+
+  .btn-outline-light {
+    color: #0f172a;
+    border-color: #c7d4e6;
+
+    &:hover {
+      color: #0f172a;
+      background: rgba(15, 23, 42, .06) !important;
+    }
+  }
 }
 
 // =============================================
