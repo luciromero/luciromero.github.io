@@ -903,6 +903,13 @@ body.theme-light {
   background-color: #f4f7fc;
   color: #0f172a;
 
+  .gradient-text {
+    background: linear-gradient(135deg, #0052cc, #0078ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
   .hero-section,
   .about-section,
   .contact-section {
@@ -927,6 +934,11 @@ body.theme-light {
     .nav-link,
     .btn-theme-toggle {
       color: #0f172a !important;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: #0052cc !important;
     }
 
     .btn-theme-toggle {
@@ -963,6 +975,16 @@ body.theme-light {
     color: #475569;
   }
 
+  .section-label {
+    color: #0052cc;
+  }
+
+  .hero-badge {
+    background: rgba($c-blue, .08);
+    border-color: rgba($c-blue, .22);
+    color: #0052cc;
+  }
+
   .service-card,
   .about-card-main,
   .stat-card,
@@ -973,6 +995,20 @@ body.theme-light {
     background: #ffffff;
     border-color: #d6dfec;
     color: #0f172a;
+  }
+
+  .code-window .code-pre {
+    color: #1e293b;
+
+    .ck  { color: #a21caf; }
+    .cv  { color: #0f766e; }
+    .cp  { color: #0369a1; }
+    .cs  { color: #92400e; }
+    .cb  { color: #7c3aed; }
+  }
+
+  .port-icon {
+    color: rgba(15, 23, 42, .2) !important;
   }
 
   .contact-form {
@@ -998,6 +1034,11 @@ body.theme-light {
     background: rgba(15, 23, 42, .04);
     border-color: #d6dfec;
     color: #334155;
+  }
+
+  .scroll-hint,
+  .scroll-hint .scroll-hint-text {
+    color: #64748b;
   }
 
   .code-window .code-window-bar {

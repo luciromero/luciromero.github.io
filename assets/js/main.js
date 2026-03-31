@@ -7,6 +7,24 @@
   const body = document.body;
   const toggleBtn = document.getElementById('themeToggle');
   const storageKey = 'site-theme';
+  let fallbackTheme = 'dark';
+
+  const getSavedTheme = function () {
+    try {
+      return localStorage.getItem(storageKey);
+    } catch {
+      return fallbackTheme;
+    }
+  };
+
+  const setSavedTheme = function (theme) {
+    fallbackTheme = theme;
+    try {
+      localStorage.setItem(storageKey, theme);
+    } catch {
+      // Ignorar si el navegador bloquea storage
+    }
+  };
 
   const applyTheme = function (theme) {
     const isLight = theme === 'light';
@@ -29,13 +47,13 @@
     toggleBtn.setAttribute('title', isLight ? 'Activar tema oscuro' : 'Activar tema claro');
   };
 
-  const initialTheme = localStorage.getItem(storageKey) || 'dark';
+  const initialTheme = getSavedTheme() || 'dark';
   applyTheme(initialTheme);
 
   if (!toggleBtn) return;
   toggleBtn.addEventListener('click', function () {
     const nextTheme = body.classList.contains('theme-light') ? 'dark' : 'light';
-    localStorage.setItem(storageKey, nextTheme);
+    setSavedTheme(nextTheme);
     applyTheme(nextTheme);
   });
 })();
