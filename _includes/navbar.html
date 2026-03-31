@@ -5,12 +5,14 @@
   {% assign nav_about = '#about' %}
   {% assign nav_portfolio = '#portfolio' %}
   {% assign nav_contact = '#contact' %}
+  {% assign nav_admin = '/admin/login/' | relative_url %}
 {% else %}
   {% assign nav_home = '/#home' | relative_url %}
   {% assign nav_services = '/#services' | relative_url %}
   {% assign nav_about = '/#about' | relative_url %}
   {% assign nav_portfolio = '/#portfolio' | relative_url %}
   {% assign nav_contact = '/#contact' | relative_url %}
+  {% assign nav_admin = '/admin/login/' | relative_url %}
 {% endif %}
 
 <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
@@ -32,6 +34,7 @@
         <li class="nav-item"><a class="nav-link" href="{{ nav_about }}">Sobre mí</a></li>
         <li class="nav-item"><a class="nav-link" href="{{ nav_portfolio }}">Portafolio</a></li>
         <li class="nav-item"><a class="nav-link" href="{{ nav_contact }}">Contacto</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ nav_admin }}">Admin</a></li>
       </ul>
       <button id="themeToggle" class="btn btn-theme-toggle ms-lg-3 mt-2 mt-lg-0" type="button" aria-label="Cambiar tema" title="Cambiar tema">
         <i class="bi bi-sun-fill" aria-hidden="true"></i>
