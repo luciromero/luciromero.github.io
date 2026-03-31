@@ -1,4 +1,4 @@
----
+﻿---
 layout: default
 title: "Panel de presupuesto"
 description: "Panel interno para crear presupuestos"
@@ -50,7 +50,6 @@ permalink: /admin/presupuesto/
   input[type="text"]:hover, input[type="date"]:hover { background: rgba(0,0,0,0.04); }
   input[type="text"]:focus, input[type="date"]:focus { background: rgba(9,105,218,0.08); box-shadow: 0 0 0 1px rgba(9,105,218,0.3); }
 
-  /* Header */
   .header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 2px solid var(--border); }
   .brand-name { font-family: 'Space Mono', monospace; font-size: 18px; color: var(--accent); font-weight: 700; }
   .brand-tag { font-size: 12px; color: var(--text3); margin-top: 3px; }
@@ -60,26 +59,22 @@ permalink: /admin/presupuesto/
   .doc-title { font-family: 'Space Mono', monospace; font-size: 24px; color: var(--text); font-weight: 700; letter-spacing: -0.02em; }
   .doc-num { font-family: 'Space Mono', monospace; font-size: 12px; color: var(--accent2); margin-top: 4px; }
 
-  /* Parties */
   .parties { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
   .party-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.25rem; }
   .party-label { font-size: 10px; letter-spacing: 0.1em; color: var(--accent); font-family: 'Space Mono', monospace; text-transform: uppercase; margin-bottom: 0.6rem; font-weight: 700; }
   .party-name { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
   .party-detail { font-size: 13px; color: var(--text2); line-height: 1.7; }
 
-  /* Date row */
   .dates-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem; }
   .date-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 0.75rem 1rem; }
   .date-label { font-size: 10px; letter-spacing: 0.1em; color: var(--text3); font-family: 'Space Mono', monospace; text-transform: uppercase; margin-bottom: 4px; }
   .date-val { font-family: 'Space Mono', monospace; font-size: 13px; color: var(--text); }
 
-  /* Section title */
   .section-title { font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 0.1em; color: var(--text3); text-transform: uppercase; margin-bottom: 0.75rem; margin-top: 1.5rem; display: flex; align-items: center; gap: 8px; }
   .section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
   .section-title.ads { color: var(--accent2); }
   .section-title.ads::after { background: #b3d0f5; }
 
-  /* Items table */
   .items-table { width: 100%; border-collapse: collapse; margin-bottom: 0.5rem; }
   .items-table thead th { font-size: 11px; letter-spacing: 0.08em; color: var(--text3); text-transform: uppercase; font-weight: 400; padding: 0.5rem 0.75rem; text-align: left; border-bottom: 1px solid var(--border); font-family: 'Space Mono', monospace; }
   .items-table thead th.right { text-align: right; }
@@ -96,12 +91,9 @@ permalink: /admin/presupuesto/
   .add-row-btn:hover { border-color: var(--accent); color: var(--accent); background: #e6f4f1; }
   .add-row-btn.ads:hover { border-color: var(--accent2); color: var(--accent2); background: #ddeeff; }
 
-  /* Ads note box */
   .ads-note { background: #f0f6ff; border: 1px solid #b3d0f5; border-radius: 8px; padding: 0.75rem 1rem; margin-bottom: 0.5rem; font-size: 12px; color: var(--accent2); display: flex; align-items: flex-start; gap: 8px; }
   .ads-note-icon { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
 
-  /* Totals */
-  .totals-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem; }
   .totals-block { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
   .totals-header { padding: 0.6rem 1.25rem; border-bottom: 1px solid var(--border); font-size: 11px; letter-spacing: 0.08em; color: var(--text3); text-transform: uppercase; font-family: 'Space Mono', monospace; }
   .totals-header.ads { color: var(--accent2); }
@@ -116,43 +108,54 @@ permalink: /admin/presupuesto/
   .total-final.ads .total-label { color: var(--accent2); }
   .total-final.ads .total-val { color: var(--accent2); }
 
-  /* Notes */
   .notes-area { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.25rem; font-size: 13px; color: var(--text2); line-height: 1.7; min-height: 70px; }
 
-  /* Terms */
   .terms-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem; }
   .term-item { background: var(--bg2); border: 1px solid var(--border); border-radius: 6px; padding: 0.75rem 1rem; }
   .term-key { font-size: 10px; color: var(--text3); font-family: 'Space Mono', monospace; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
   .term-val { font-size: 13px; color: var(--text); }
 
-  /* Sig */
   .sig-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem; }
   .sig-box { border-top: 2px solid var(--border); padding-top: 0.75rem; }
   .sig-label { font-size: 10px; color: var(--text3); font-family: 'Space Mono', monospace; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
   .sig-name { font-size: 13px; color: var(--text2); }
 
-  /* Footer */
   .footer { border-top: 1px solid var(--border); padding-top: 1rem; display: flex; justify-content: space-between; align-items: center; }
   .footer-left { font-family: 'Space Mono', monospace; font-size: 11px; color: var(--text3); }
   .footer-right { font-size: 11px; color: var(--text3); }
 
-  /* Actions */
-  .actions { display: flex; gap: 0.75rem; margin-bottom: 2rem; flex-wrap: wrap; }
+  .actions { display: flex; gap: 0.75rem; margin-bottom: 1rem; flex-wrap: wrap; }
   .btn { padding: 0.45rem 1rem; border-radius: 6px; font-family: 'DM Sans', sans-serif; font-size: 13px; cursor: pointer; transition: all 0.15s; border: 1px solid; }
   .btn-primary { background: var(--accent); border-color: var(--accent); color: white; font-weight: 600; }
   .btn-primary:hover { background: #005c4f; border-color: #005c4f; }
   .btn-outline { background: transparent; border-color: var(--border); color: var(--text2); }
   .btn-outline:hover { border-color: var(--accent2); color: var(--accent2); }
+  .btn-highlight { border-color: var(--accent2); color: var(--accent2); font-weight: 700; background: #eef5ff; }
+  .btn-highlight:hover { background: #ddeeff; }
+  .btn-xs { font-size: 11px; padding: 0.25rem 0.5rem; border-radius: 5px; }
+
   .status-badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 20px; font-family: 'Space Mono', monospace; font-size: 11px; cursor: pointer; border: 1px solid; }
   .status-borrador { background: #fff8c5; border-color: #d4a72c; color: var(--yellow); }
   .status-enviado { background: #ddeeff; border-color: #80b8f4; color: var(--accent2); }
   .status-aprobado { background: #e6f4f1; border-color: #b3ddd7; color: var(--accent); }
 
+  .saved-panel { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 0.9rem 1rem; margin-bottom: 1.5rem; }
+  .saved-head { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 0.75rem; flex-wrap: wrap; }
+  .saved-title { font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text3); }
+  .saved-current { font-size: 12px; color: var(--text2); }
+  .saved-table { width: 100%; border-collapse: collapse; }
+  .saved-table th, .saved-table td { padding: 0.45rem 0.35rem; border-bottom: 1px solid rgba(208,215,222,0.45); font-size: 12px; vertical-align: middle; }
+  .saved-table th { color: var(--text3); font-family: 'Space Mono', monospace; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 400; }
+  .saved-table td:last-child { text-align: right; white-space: nowrap; }
+  .saved-empty { color: var(--text3); font-style: italic; }
+  #save-feedback { font-size: 12px; color: var(--green); margin-top: 0.45rem; }
+
   @media print {
-    .actions, .add-row-btn, .delete-row { display: none !important; }
+    .actions, .saved-panel, .add-row-btn, .delete-row { display: none !important; }
   }
 
   body.exporting-pdf .actions,
+  body.exporting-pdf .saved-panel,
   body.exporting-pdf .add-row-btn,
   body.exporting-pdf .delete-row {
     display: none !important;
@@ -162,6 +165,8 @@ permalink: /admin/presupuesto/
     .header, .parties, .dates-row, .terms-grid, .sig-row { grid-template-columns: 1fr; display: grid; }
     .header { display: block; }
     .doc-meta { margin-top: 1rem; text-align: left; }
+    .saved-table th:nth-child(3),
+    .saved-table td:nth-child(3) { display: none; }
   }
 </style>
 
@@ -171,12 +176,33 @@ permalink: /admin/presupuesto/
     <div id="status-toggle" class="status-badge status-borrador" onclick="cycleStatus()">● Borrador</div>
     <a class="btn btn-outline" href="{{ '/' | relative_url }}">← Volver al sitio</a>
     <button class="btn btn-primary" onclick="window.print()">⬇ Imprimir / PDF</button>
-    <button class="btn btn-outline" onclick="downloadTemplatePDF()">⬇ Descargar plantilla PDF</button>
+    <button class="btn btn-highlight" onclick="downloadTemplatePDF()">⬇ Descargar PDF</button>
+    <button class="btn btn-outline" onclick="saveBudget()">💾 Guardar presupuesto</button>
     <button class="btn btn-outline" onclick="resetDoc()">↺ Nuevo</button>
     <button class="btn btn-outline" onclick="logoutAdmin()">Salir</button>
   </div>
 
-  <!-- HEADER -->
+  <div class="saved-panel">
+    <div class="saved-head">
+      <div class="saved-title">Presupuestos guardados</div>
+      <div class="saved-current" id="current-budget-label">Editando: presupuesto nuevo</div>
+    </div>
+    <table class="saved-table">
+      <thead>
+        <tr>
+          <th>Nro.</th>
+          <th>Cliente</th>
+          <th>Actualizado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody id="saved-body">
+        <tr><td class="saved-empty" colspan="4">Todavía no guardaste presupuestos.</td></tr>
+      </tbody>
+    </table>
+    <div id="save-feedback"></div>
+  </div>
+
   <div class="header">
     <div>
       <div class="brand-name">[&lt;LR Digital Group/&gt;]</div>
@@ -189,7 +215,6 @@ permalink: /admin/presupuesto/
     </div>
   </div>
 
-  <!-- PARTIES -->
   <div class="parties">
     <div class="party-card">
       <div class="party-label">De</div>
@@ -198,12 +223,11 @@ permalink: /admin/presupuesto/
     </div>
     <div class="party-card">
       <div class="party-label">Para</div>
-      <div class="party-name" contenteditable>Nombre del Cliente</div>
-      <div class="party-detail" contenteditable>Empresa o razón social<br>email@cliente.com<br>Ciudad, País</div>
+      <div id="client-name" class="party-name" contenteditable>Nombre del Cliente</div>
+      <div id="client-detail" class="party-detail" contenteditable>Empresa o razón social<br>email@cliente.com<br>Ciudad, País</div>
     </div>
   </div>
 
-  <!-- DATES -->
   <div class="dates-row">
     <div class="date-card">
       <div class="date-label">Fecha de emisión</div>
@@ -215,7 +239,6 @@ permalink: /admin/presupuesto/
     </div>
   </div>
 
-  <!-- ── SERVICIOS PRINCIPALES ── -->
   <div class="section-title">Mis servicios</div>
 
   <table class="items-table" id="table-main">
@@ -230,7 +253,6 @@ permalink: /admin/presupuesto/
   </table>
   <button class="add-row-btn" onclick="addRow('main')">+ Agregar servicio</button>
 
-  <!-- Totals main -->
   <div style="margin-left:auto; width:300px; margin-bottom:2rem;">
     <div class="totals-block">
       <div class="totals-header">Resumen de servicios</div>
@@ -241,7 +263,6 @@ permalink: /admin/presupuesto/
     </div>
   </div>
 
-  <!-- ── GOOGLE ADS (pago directo) ── -->
   <div class="section-title ads">Google Ads — pago directo a Google</div>
 
   <div class="ads-note">
@@ -271,32 +292,29 @@ permalink: /admin/presupuesto/
     </div>
   </div>
 
-  <!-- NOTAS -->
   <div class="section-title">Notas</div>
-  <div class="notes-area" contenteditable>El presupuesto no incluye dominios, hosting ni licencias de terceros. Las revisiones adicionales fuera del alcance se cotizarán aparte. Los valores en ARS están sujetos a actualización en caso de variación cambiaria.</div>
+  <div id="notes-area" class="notes-area" contenteditable>El presupuesto no incluye dominios, hosting ni licencias de terceros. Las revisiones adicionales fuera del alcance se cotizarán aparte. Los valores en ARS están sujetos a actualización en caso de variación cambiaria.</div>
 
-  <!-- CONDICIONES -->
   <div class="section-title">Condiciones</div>
   <div class="terms-grid">
     <div class="term-item">
       <div class="term-key">Forma de pago</div>
-      <div class="term-val" contenteditable>50% al iniciar · 50% al entregar</div>
+      <div id="term-payment" class="term-val" contenteditable>50% al iniciar · 50% al entregar</div>
     </div>
     <div class="term-item">
       <div class="term-key">Moneda</div>
-      <div class="term-val" contenteditable>Pesos Argentinos (ARS)</div>
+      <div id="term-currency" class="term-val" contenteditable>Pesos Argentinos (ARS)</div>
     </div>
     <div class="term-item">
       <div class="term-key">Tiempo de entrega</div>
-      <div class="term-val" contenteditable>4 a 6 semanas desde la aprobación</div>
+      <div id="term-delivery" class="term-val" contenteditable>4 a 6 semanas desde la aprobación</div>
     </div>
     <div class="term-item">
       <div class="term-key">Revisiones incluidas</div>
-      <div class="term-val" contenteditable>2 rondas de revisión por módulo</div>
+      <div id="term-revisions" class="term-val" contenteditable>2 rondas de revisión por módulo</div>
     </div>
   </div>
 
-  <!-- FIRMA -->
   <div class="sig-row">
     <div class="sig-box">
       <div class="sig-label">Firma · LR Digital Group</div>
@@ -304,11 +322,10 @@ permalink: /admin/presupuesto/
     </div>
     <div class="sig-box">
       <div class="sig-label">Firma · Cliente</div>
-      <div class="sig-name" contenteditable>Nombre del cliente</div>
+      <div id="client-sign" class="sig-name" contenteditable>Nombre del cliente</div>
     </div>
   </div>
 
-  <!-- FOOTER -->
   <div class="footer">
     <div class="footer-left">luciromero.github.io</div>
     <div class="footer-right">Presupuesto válido por 30 días desde la fecha de emisión</div>
@@ -332,53 +349,146 @@ permalink: /admin/presupuesto/
     { id: 13, name: 'Remarketing', desc: 'Impactar a usuarios que ya visitaron el sitio.' },
   ];
 
-  let mainItems = defaultMain.map(i => ({...i, price: ''}));
-  let adsItems = defaultAds.map(i => ({...i, price: ''}));
-  let nextId = 20;
+  const STORAGE_KEY = 'lr_saved_budgets_v1';
+  const DEFAULT_STATE = {
+    clientName: 'Nombre del Cliente',
+    clientDetail: 'Empresa o razón social<br>email@cliente.com<br>Ciudad, País',
+    notes: 'El presupuesto no incluye dominios, hosting ni licencias de terceros. Las revisiones adicionales fuera del alcance se cotizarán aparte. Los valores en ARS están sujetos a actualización en caso de variación cambiaria.',
+    termPayment: '50% al iniciar · 50% al entregar',
+    termCurrency: 'Pesos Argentinos (ARS)',
+    termDelivery: '4 a 6 semanas desde la aprobación',
+    termRevisions: '2 rondas de revisión por módulo',
+    clientSign: 'Nombre del cliente',
+  };
 
-  const statuses = ['status-borrador','status-enviado','status-aprobado'];
-  const statusLabels = ['● Borrador','● Enviado','● Aprobado'];
+  let mainItems = defaultMain.map(i => ({ ...i, price: '' }));
+  let adsItems = defaultAds.map(i => ({ ...i, price: '' }));
+  let nextId = 20;
+  let currentBudgetId = null;
+
+  const statuses = ['status-borrador', 'status-enviado', 'status-aprobado'];
+  const statusLabels = ['● Borrador', '● Enviado', '● Aprobado'];
   let statusIdx = 0;
 
   function cycleStatus() {
     statusIdx = (statusIdx + 1) % 3;
+    applyStatus();
+  }
+
+  function applyStatus() {
     const el = document.getElementById('status-toggle');
+    if (!el) return;
     el.className = 'status-badge ' + statuses[statusIdx];
     el.textContent = statusLabels[statusIdx];
   }
 
   function fmtARS(val) {
-    const n = parseFloat((val||'').toString().replace(/\./g,'').replace(',','.'));
+    const n = parseFloat((val || '').toString().replace(/\./g, '').replace(',', '.'));
     if (isNaN(n) || n === 0) return '$0';
     return '$' + Math.round(n).toLocaleString('es-AR');
   }
 
   function parsePrice(val) {
-    const s = (val||'').toString().replace(/\$/g,'').replace(/\./g,'').replace(',','.');
+    const s = (val || '').toString().replace(/\$/g, '').replace(/\./g, '').replace(',', '.');
     const n = parseFloat(s);
     return isNaN(n) ? 0 : n;
+  }
+
+  function readRecords() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      const parsed = raw ? JSON.parse(raw) : [];
+      return Array.isArray(parsed) ? parsed : [];
+    } catch (error) {
+      return [];
+    }
+  }
+
+  function writeRecords(records) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(records));
+  }
+
+  function escapeHtml(str) {
+    return String(str || '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+  }
+
+  function showFeedback(text) {
+    const box = document.getElementById('save-feedback');
+    if (!box) return;
+    box.textContent = text;
+    setTimeout(function () {
+      if (box.textContent === text) box.textContent = '';
+    }, 2800);
+  }
+
+  function updateCurrentLabel() {
+    const label = document.getElementById('current-budget-label');
+    if (!label) return;
+    const nro = (document.getElementById('doc-num')?.textContent || '').trim() || 'sin número';
+    label.textContent = currentBudgetId ? ('Editando: ' + nro + ' (guardado)') : ('Editando: ' + nro + ' (nuevo)');
+  }
+
+  function renderSavedBudgets() {
+    const tbody = document.getElementById('saved-body');
+    if (!tbody) return;
+
+    const records = readRecords().sort(function (a, b) {
+      return (b.updatedAt || '').localeCompare(a.updatedAt || '');
+    });
+
+    if (!records.length) {
+      tbody.innerHTML = '<tr><td class="saved-empty" colspan="4">Todavía no guardaste presupuestos.</td></tr>';
+      updateCurrentLabel();
+      return;
+    }
+
+    tbody.innerHTML = records.map(function (record) {
+      const savedDate = record.updatedAt ? new Date(record.updatedAt).toLocaleString('es-AR') : '-';
+      const nro = escapeHtml(record.docNum || '-');
+      const client = escapeHtml(record.clientName || 'Cliente sin nombre');
+      const id = escapeHtml(record.id || '');
+
+      return '<tr>' +
+        '<td class="mono">' + nro + '</td>' +
+        '<td>' + client + '</td>' +
+        '<td>' + savedDate + '</td>' +
+        '<td>' +
+          '<button class="btn btn-outline btn-xs" onclick="openBudget(\'' + id + '\')">Abrir</button> ' +
+          '<button class="btn btn-outline btn-xs" onclick="deleteBudget(\'' + id + '\')">Eliminar</button>' +
+        '</td>' +
+      '</tr>';
+    }).join('');
+
+    updateCurrentLabel();
   }
 
   function renderTable(items, bodyId, section) {
     const tbody = document.getElementById(bodyId);
     tbody.innerHTML = '';
     let total = 0;
-    items.forEach(item => {
+
+    items.forEach(function (item) {
       total += parsePrice(item.price);
       const tr = document.createElement('tr');
-      tr.innerHTML = `
-        <td>
-          <div class="item-name" contenteditable data-field="name" data-id="${item.id}" data-sec="${section}">${item.name}</div>
-          <div class="item-desc" contenteditable data-field="desc" data-id="${item.id}" data-sec="${section}">${item.desc}</div>
-        </td>
-        <td>
-          <div class="item-price" contenteditable data-field="price" data-id="${item.id}" data-sec="${section}" data-raw="${item.price}">${item.price ? fmtARS(item.price) : ''}</div>
-        </td>
-        <td style="text-align:right">
-          <button class="delete-row" onclick="removeRow(${item.id},'${section}')">✕</button>
-        </td>`;
+      tr.innerHTML =
+        '<td>' +
+          '<div class="item-name" contenteditable data-field="name" data-id="' + item.id + '" data-sec="' + section + '">' + item.name + '</div>' +
+          '<div class="item-desc" contenteditable data-field="desc" data-id="' + item.id + '" data-sec="' + section + '">' + item.desc + '</div>' +
+        '</td>' +
+        '<td>' +
+          '<div class="item-price" contenteditable data-field="price" data-id="' + item.id + '" data-sec="' + section + '">' + (item.price ? fmtARS(item.price) : '') + '</div>' +
+        '</td>' +
+        '<td style="text-align:right">' +
+          '<button class="delete-row" onclick="removeRow(' + item.id + ',\'' + section + '\')">✕</button>' +
+        '</td>';
       tbody.appendChild(tr);
     });
+
     updateTotal(section, total);
     attachListeners();
   }
@@ -388,38 +498,40 @@ permalink: /admin/presupuesto/
   }
 
   function attachListeners() {
-    document.querySelectorAll('[data-field]').forEach(el => {
+    document.querySelectorAll('[data-field]').forEach(function (el) {
       el.oninput = null;
-      el.addEventListener('input', function() {
-        const id = parseInt(this.dataset.id);
+      el.addEventListener('input', function () {
+        const id = parseInt(this.dataset.id, 10);
         const field = this.dataset.field;
         const sec = this.dataset.sec;
         const arr = sec === 'main' ? mainItems : adsItems;
-        const item = arr.find(i => i.id === id);
+        const item = arr.find(function (i) { return i.id === id; });
         if (!item) return;
-        if (field === 'price') {
-          item.price = this.textContent.trim();
-        } else {
-          item[field] = this.textContent.trim();
-        }
+
+        if (field === 'price') item.price = this.textContent.trim();
+        else item[field] = this.textContent.trim();
+
         if (field === 'price') {
           let tot = 0;
-          arr.forEach(i => tot += parsePrice(i.price));
+          arr.forEach(function (i) { tot += parsePrice(i.price); });
           updateTotal(sec, tot);
         }
       });
+
       if (el.dataset.field === 'price') {
-        el.addEventListener('blur', function() {
-          const id = parseInt(this.dataset.id);
+        el.addEventListener('blur', function () {
+          const id = parseInt(this.dataset.id, 10);
           const sec = this.dataset.sec;
           const arr = sec === 'main' ? mainItems : adsItems;
-          const item = arr.find(i => i.id === id);
+          const item = arr.find(function (i) { return i.id === id; });
           if (!item) return;
+
           const raw = parsePrice(item.price);
           item.price = raw || '';
           this.textContent = raw ? fmtARS(raw) : '';
+
           let tot = 0;
-          arr.forEach(i => tot += parsePrice(i.price));
+          arr.forEach(function (i) { tot += parsePrice(i.price); });
           updateTotal(sec, tot);
         });
       }
@@ -434,8 +546,8 @@ permalink: /admin/presupuesto/
   }
 
   function removeRow(id, sec) {
-    if (sec === 'main') mainItems = mainItems.filter(i => i.id !== id);
-    else adsItems = adsItems.filter(i => i.id !== id);
+    if (sec === 'main') mainItems = mainItems.filter(function (i) { return i.id !== id; });
+    else adsItems = adsItems.filter(function (i) { return i.id !== id; });
     renderAll();
   }
 
@@ -444,14 +556,127 @@ permalink: /admin/presupuesto/
     renderTable(adsItems, 'body-ads', 'ads');
   }
 
-  function resetDoc() {
-    if (confirm('¿Crear nuevo presupuesto? Se perderán los cambios actuales.')) {
-      mainItems = defaultMain.map(i => ({...i, price: ''}));
-      adsItems = defaultAds.map(i => ({...i, price: ''}));
-      nextId = 20;
-      renderAll();
-      document.getElementById('doc-num').textContent = '2026-00' + Math.floor(Math.random()*9+1);
+  function collectDocState() {
+    return {
+      id: currentBudgetId || ('b-' + Date.now()),
+      updatedAt: new Date().toISOString(),
+      statusIdx: statusIdx,
+      nextId: nextId,
+      docNum: (document.getElementById('doc-num')?.textContent || '').trim(),
+      fechaEmision: document.getElementById('fecha-emision')?.value || '',
+      fechaInicio: document.getElementById('fecha-inicio')?.value || '',
+      clientName: document.getElementById('client-name')?.innerHTML || '',
+      clientDetail: document.getElementById('client-detail')?.innerHTML || '',
+      notes: document.getElementById('notes-area')?.innerHTML || '',
+      termPayment: document.getElementById('term-payment')?.innerHTML || '',
+      termCurrency: document.getElementById('term-currency')?.innerHTML || '',
+      termDelivery: document.getElementById('term-delivery')?.innerHTML || '',
+      termRevisions: document.getElementById('term-revisions')?.innerHTML || '',
+      clientSign: document.getElementById('client-sign')?.innerHTML || '',
+      mainItems: mainItems.map(function (i) { return ({ ...i }); }),
+      adsItems: adsItems.map(function (i) { return ({ ...i }); }),
+    };
+  }
+
+  function applyDocState(record) {
+    if (!record) return;
+
+    currentBudgetId = record.id || null;
+    statusIdx = Number.isInteger(record.statusIdx) ? record.statusIdx : 0;
+    nextId = Number.isFinite(record.nextId) ? record.nextId : 20;
+    mainItems = Array.isArray(record.mainItems) ? record.mainItems.map(function (i) { return ({ ...i }); }) : defaultMain.map(function (i) { return ({ ...i, price: '' }); });
+    adsItems = Array.isArray(record.adsItems) ? record.adsItems.map(function (i) { return ({ ...i }); }) : defaultAds.map(function (i) { return ({ ...i, price: '' }); });
+
+    document.getElementById('doc-num').textContent = record.docNum || '2026-001';
+    document.getElementById('fecha-emision').value = record.fechaEmision || '';
+    document.getElementById('fecha-inicio').value = record.fechaInicio || '';
+
+    document.getElementById('client-name').innerHTML = record.clientName || DEFAULT_STATE.clientName;
+    document.getElementById('client-detail').innerHTML = record.clientDetail || DEFAULT_STATE.clientDetail;
+    document.getElementById('notes-area').innerHTML = record.notes || DEFAULT_STATE.notes;
+    document.getElementById('term-payment').innerHTML = record.termPayment || DEFAULT_STATE.termPayment;
+    document.getElementById('term-currency').innerHTML = record.termCurrency || DEFAULT_STATE.termCurrency;
+    document.getElementById('term-delivery').innerHTML = record.termDelivery || DEFAULT_STATE.termDelivery;
+    document.getElementById('term-revisions').innerHTML = record.termRevisions || DEFAULT_STATE.termRevisions;
+    document.getElementById('client-sign').innerHTML = record.clientSign || DEFAULT_STATE.clientSign;
+
+    applyStatus();
+    renderAll();
+    updateCurrentLabel();
+  }
+
+  function saveBudget() {
+    const record = collectDocState();
+    const records = readRecords();
+    const idx = records.findIndex(function (r) { return r.id === record.id; });
+
+    if (idx >= 0) records[idx] = record;
+    else records.push(record);
+
+    writeRecords(records);
+    currentBudgetId = record.id;
+    renderSavedBudgets();
+    showFeedback('Presupuesto guardado correctamente.');
+  }
+
+  function openBudget(id) {
+    const records = readRecords();
+    const found = records.find(function (r) { return r.id === id; });
+    if (!found) return;
+    applyDocState(found);
+    showFeedback('Presupuesto cargado para edición.');
+  }
+
+  function deleteBudget(id) {
+    const records = readRecords();
+    const found = records.find(function (r) { return r.id === id; });
+    if (!found) return;
+
+    const nro = found.docNum || 'este presupuesto';
+    if (!confirm('¿Eliminar ' + nro + '? Esta acción no se puede deshacer.')) return;
+
+    const filtered = records.filter(function (r) { return r.id !== id; });
+    writeRecords(filtered);
+
+    if (currentBudgetId === id) {
+      currentBudgetId = null;
+      setNewDraft(false);
     }
+
+    renderSavedBudgets();
+    showFeedback('Presupuesto eliminado.');
+  }
+
+  function setNewDraft(askConfirm) {
+    if (askConfirm === undefined) askConfirm = true;
+    if (askConfirm && !confirm('¿Crear nuevo presupuesto? Se perderán los cambios actuales.')) return;
+
+    mainItems = defaultMain.map(function (i) { return ({ ...i, price: '' }); });
+    adsItems = defaultAds.map(function (i) { return ({ ...i, price: '' }); });
+    nextId = 20;
+    statusIdx = 0;
+    currentBudgetId = null;
+
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('doc-num').textContent = '2026-00' + Math.floor(Math.random() * 9 + 1);
+    document.getElementById('fecha-emision').value = today;
+    document.getElementById('fecha-inicio').value = '';
+    document.getElementById('client-name').innerHTML = DEFAULT_STATE.clientName;
+    document.getElementById('client-detail').innerHTML = DEFAULT_STATE.clientDetail;
+    document.getElementById('notes-area').innerHTML = DEFAULT_STATE.notes;
+    document.getElementById('term-payment').innerHTML = DEFAULT_STATE.termPayment;
+    document.getElementById('term-currency').innerHTML = DEFAULT_STATE.termCurrency;
+    document.getElementById('term-delivery').innerHTML = DEFAULT_STATE.termDelivery;
+    document.getElementById('term-revisions').innerHTML = DEFAULT_STATE.termRevisions;
+    document.getElementById('client-sign').innerHTML = DEFAULT_STATE.clientSign;
+
+    applyStatus();
+    renderAll();
+    updateCurrentLabel();
+  }
+
+  function resetDoc() {
+    setNewDraft(true);
   }
 
   function logoutAdmin() {
@@ -497,5 +722,8 @@ permalink: /admin/presupuesto/
   const today = new Date();
   document.getElementById('fecha-emision').value = today.toISOString().split('T')[0];
 
+  applyStatus();
   renderAll();
+  renderSavedBudgets();
+  updateCurrentLabel();
 </script>
