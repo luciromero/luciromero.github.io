@@ -38,7 +38,7 @@ permalink: /admin/presupuesto/
     --green: #1a7f37;
   }
   body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 14px; }
-  .wrap { max-width: 860px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 5.5rem 1.5rem 2rem; }
   .mono { font-family: 'Space Mono', monospace; }
   [contenteditable] { outline: none; cursor: text; border-radius: 4px; transition: background 0.15s; }
   [contenteditable]:hover { background: rgba(0,0,0,0.04); }
@@ -154,11 +154,38 @@ permalink: /admin/presupuesto/
     .actions, .saved-panel, .add-row-btn, .delete-row { display: none !important; }
   }
 
+  /* ── PDF export ── */
   body.exporting-pdf .actions,
   body.exporting-pdf .saved-panel,
   body.exporting-pdf .add-row-btn,
   body.exporting-pdf .delete-row {
     display: none !important;
+  }
+
+  /* Saltos de página para PDF A4 */
+  .pdf-page-break {
+    page-break-before: always;
+    break-before: page;
+    padding-top: 1rem;
+  }
+
+  /* Bloque compacto en cabecera PDF */
+  .pdf-header-compact .header {
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+  }
+  .pdf-header-compact .parties {
+    margin-bottom: 0.75rem;
+  }
+  .pdf-header-compact .dates-row {
+    margin-bottom: 1rem;
+  }
+  /* Evitar que grillas se rompan en columnas al exportar */
+  .pdf-clone .parties,
+  .pdf-clone .dates-row,
+  .pdf-clone .terms-grid,
+  .pdf-clone .sig-row {
+    display: grid !important;
   }
 
   @media (max-width: 900px) {
@@ -689,18 +716,49 @@ permalink: /admin/presupuesto/
   }
 
   async function downloadTemplatePDF() {
-    const source = document.querySelector('.wrap');
-    if (!source) return;
-
     if (typeof html2pdf === 'undefined') {
-      alert('No se pudo cargar el exportador de PDF.');
+      alert('No se pudo cargar el exportador de PDF. Revisá tu conexión a internet.');
       return;
     }
+
+    const source = document.querySelector('.wrap');
+    if (!source) return;
 
     const docNum = (document.getElementById('doc-num')?.textContent || 'presupuesto').trim().replace(/\s+/g, '-');
     const fileName = 'presupuesto-' + docNum + '.pdf';
 
+    // Clonar el wrap y prepararlo para exportación
     document.body.classList.add('exporting-pdf');
+
+    const clone = source.cloneNode(true);
+    clone.classList.add('pdf-clone', 'pdf-header-compact');
+
+    // Quitar elementos de UI del clon
+    clone.querySelectorAll('.actions, .saved-panel, .add-row-btn, .delete-row').forEach(function (el) {
+      el.remove();
+    });
+
+    // Quitar contenteditable del clon para que los textos se vean bien
+    clone.querySelectorAll('[contenteditable]').forEach(function (el) {
+      el.removeAttribute('contenteditable');
+    });
+
+    // Agregar saltos de página entre secciones principales
+    const adsTitle = clone.querySelector('.section-title.ads');
+    if (adsTitle) adsTitle.classList.add('pdf-page-break');
+
+    const notesTitle = Array.from(clone.querySelectorAll('.section-title')).find(function (el) {
+      return el.textContent.trim().toLowerCase().includes('notas');
+    });
+    if (notesTitle) notesTitle.classList.add('pdf-page-break');
+
+    // Estilos extra en línea para el clon: forzar grillas y compactar cabecera
+    clone.style.cssText = 'max-width:860px;margin:0;padding:1.5rem;font-size:13px;';
+
+    const container = document.createElement('div');
+    container.style.cssText = 'position:absolute;left:-9999px;top:0;width:860px;';
+    container.appendChild(clone);
+    document.body.appendChild(container);
 
     try {
       await html2pdf()
@@ -708,13 +766,21 @@ permalink: /admin/presupuesto/
           margin: [8, 8, 10, 8],
           filename: fileName,
           image: { type: 'jpeg', quality: 0.98 },
-          html2canvas: { scale: 2, useCORS: true, scrollY: 0 },
+          html2canvas: {
+            scale: 2,
+            useCORS: true,
+            scrollY: 0,
+            scrollX: 0,
+            windowWidth: 900,
+            logging: false,
+          },
           jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-          pagebreak: { mode: ['avoid-all', 'css', 'legacy'] },
+          pagebreak: { mode: ['css', 'legacy'], before: '.pdf-page-break' },
         })
-        .from(source)
+        .from(clone)
         .save();
     } finally {
+      document.body.removeChild(container);
       document.body.classList.remove('exporting-pdf');
     }
   }
