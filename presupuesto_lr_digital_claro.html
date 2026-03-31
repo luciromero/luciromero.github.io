@@ -819,11 +819,6 @@ permalink: /admin/presupuesto/
   }
 
   async function printExactView() {
-    if (typeof window.html2canvas === 'undefined') {
-      alert('No se pudo cargar el motor de impresión. Revisá tu conexión e intentá de nuevo.');
-      return;
-    }
-
     const source = document.querySelector('.wrap');
     if (!source) return;
 
@@ -848,28 +843,28 @@ permalink: /admin/presupuesto/
       el.removeAttribute('contenteditable');
     });
 
-    const renderHost = document.createElement('div');
-    renderHost.style.cssText = 'position:absolute;left:-9999px;top:0;width:860px;background:#fff;padding:8px;';
-    renderHost.appendChild(clone);
-    document.body.appendChild(renderHost);
+    const measureHost = document.createElement('div');
+    measureHost.style.cssText = 'position:absolute;left:-9999px;top:0;width:820px;background:#fff;padding:0;';
+    measureHost.appendChild(clone);
+    document.body.appendChild(measureHost);
 
-    let imageData = '';
-    try {
-      const canvas = await window.html2canvas(clone, {
-        scale: 2,
-        useCORS: true,
-        backgroundColor: '#ffffff',
-        windowWidth: 860,
-        scrollX: 0,
-        scrollY: 0,
-        logging: false,
-      });
-      imageData = canvas.toDataURL('image/jpeg', 0.98);
-    } finally {
-      document.body.removeChild(renderHost);
-    }
+    const sourceW = clone.scrollWidth || 820;
+    const sourceH = clone.scrollHeight || 1100;
+    document.body.removeChild(measureHost);
 
-    if (!imageData) return;
+    const a4W = 210;
+    const a4H = 297;
+    const margin = 8;
+    const usableW = a4W - margin * 2;
+    const usableH = a4H - margin * 2;
+    const mmPerPx = 0.264583;
+    const contentWmm = sourceW * mmPerPx;
+    const contentHmm = sourceH * mmPerPx;
+    const scale = Math.min(usableW / contentWmm, usableH / contentHmm);
+    const scaledW = contentWmm * scale;
+    const scaledH = contentHmm * scale;
+    const offsetX = (usableW - scaledW) / 2;
+    const offsetY = (usableH - scaledH) / 2;
 
     const printWindow = window.open('', '_blank', 'width=1280,height=900');
     if (!printWindow) {
@@ -886,10 +881,15 @@ permalink: /admin/presupuesto/
       'html, body { margin:0; padding:0; background:#fff; }' +
       'body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }' +
       '.sheet { width:210mm; height:297mm; padding:8mm; box-sizing:border-box; overflow:hidden; }' +
-      '.sheet img { width:100%; height:100%; object-fit:contain; display:block; }' +
-      '</style></head><body><div class="sheet"><img src="' + imageData + '" alt="Presupuesto"></div></body></html>'
+      '.canvas { width:' + usableW.toFixed(3) + 'mm; height:' + usableH.toFixed(3) + 'mm; position:relative; overflow:hidden; }' +
+      '.print-wrap { width:' + contentWmm.toFixed(3) + 'mm; transform-origin: top left; transform: translate(' + offsetX.toFixed(3) + 'mm,' + offsetY.toFixed(3) + 'mm) scale(' + scale.toFixed(6) + '); }' +
+      '.actions, .saved-panel, .add-row-btn, .delete-row { display:none !important; }' +
+      '</style></head><body><div class="sheet"><div class="canvas"><div id="printMount" class="print-wrap"></div></div></div></body></html>'
     );
     printWindow.document.close();
+
+    const mount = printWindow.document.getElementById('printMount');
+    if (mount) mount.appendChild(clone);
 
     setTimeout(function () {
       printWindow.focus();
