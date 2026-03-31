@@ -2,12 +2,25 @@
 layout: default
 ---
 
-<section class="service-detail-hero">
-  <div class="container">
+{% assign is_marketing = page.permalink contains '/marketing/' %}
+
+<section class="service-detail-hero {% if is_marketing %}service-detail-hero-mkt{% endif %}">
+  <div class="service-detail-bg" aria-hidden="true">
+    <div class="service-detail-grid"></div>
+    <div class="service-detail-glow service-detail-glow-1"></div>
+    <div class="service-detail-glow service-detail-glow-2"></div>
+  </div>
+
+  <div class="container position-relative" style="z-index:1;">
     <a class="service-detail-back" href="{{ '/#services' | relative_url }}">
       <i class="bi bi-arrow-left"></i> Volver a servicios
     </a>
-    <span class="service-detail-chip">{{ page.category }}</span>
+    <div class="service-detail-lead">
+      <span class="service-detail-icon">
+        <i class="bi {% if is_marketing %}bi-graph-up-arrow{% else %}bi-code-slash{% endif %}"></i>
+      </span>
+      <span class="service-detail-chip">{{ page.category }}</span>
+    </div>
     <h1 class="service-detail-title">{{ page.title }}</h1>
     {% if page.summary %}
     <p class="service-detail-summary">{{ page.summary }}</p>
@@ -21,7 +34,7 @@ layout: default
   </div>
 </section>
 
-<section class="service-detail-content section-dark">
+<section class="service-detail-content section-dark {% if is_marketing %}service-detail-content-mkt{% endif %}">
   <div class="container">
     <div class="row g-4">
       <div class="col-lg-5">
@@ -44,6 +57,7 @@ layout: default
           <ol class="service-process-list">
             {% for step in page.process %}
             <li>
+              <span class="service-step-num">{{ forloop.index }}</span>
               <h3>{{ step.title }}</h3>
               <p>{{ step.detail }}</p>
             </li>

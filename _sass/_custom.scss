@@ -590,9 +590,99 @@ $c-mkt-glow:   rgba(255, 107, 43, .15);
 // =============================================
 // SERVICE DETAIL PAGE
 // =============================================
+body[data-page-layout='service'] #mainNav {
+  background: rgba($c-black-2, .9);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid $c-black-4;
+  box-shadow: 0 4px 30px rgba(0,0,0,.35);
+  padding: .65rem 0;
+}
+
 .service-detail-hero {
-  padding: 140px 0 50px;
+  position: relative;
+  overflow: hidden;
+  padding: 155px 0 56px;
   background: $c-black-1;
+}
+
+.service-detail-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.service-detail-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba($c-blue, .04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba($c-blue, .04) 1px, transparent 1px);
+  background-size: 52px 52px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 80%);
+}
+
+.service-detail-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+}
+
+.service-detail-glow-1 {
+  width: 44vw;
+  height: 44vw;
+  max-width: 520px;
+  max-height: 520px;
+  background: rgba($c-blue, .12);
+  top: -12%;
+  right: -8%;
+}
+
+.service-detail-glow-2 {
+  width: 34vw;
+  height: 34vw;
+  max-width: 420px;
+  max-height: 420px;
+  background: rgba($c-blue-acc, .09);
+  bottom: -10%;
+  left: 2%;
+}
+
+.service-detail-hero-mkt {
+  .service-detail-grid {
+    background-image:
+      linear-gradient(rgba($c-mkt, .04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba($c-mkt, .04) 1px, transparent 1px);
+  }
+
+  .service-detail-glow-1 { background: rgba($c-mkt, .14); }
+  .service-detail-glow-2 { background: rgba(#ffad42, .1); }
+}
+
+.service-detail-lead {
+  display: inline-flex;
+  align-items: center;
+  gap: .65rem;
+  margin-bottom: .9rem;
+}
+
+.service-detail-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: rgba($c-blue, .16);
+  border: 1px solid rgba($c-blue, .32);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: $c-blue-lt;
+  font-size: 1.2rem;
+}
+
+.service-detail-hero-mkt .service-detail-icon {
+  background: rgba($c-mkt, .14);
+  border-color: rgba($c-mkt, .35);
+  color: #ffad42;
 }
 
 .service-detail-back {
@@ -646,7 +736,8 @@ $c-mkt-glow:   rgba(255, 107, 43, .15);
 }
 
 .service-detail-content {
-  padding: 2.5rem 0 5rem;
+  position: relative;
+  padding: 2.8rem 0 5rem;
 }
 
 .service-detail-card {
@@ -675,10 +766,16 @@ $c-mkt-glow:   rgba(255, 107, 43, .15);
 
 .service-process-list {
   margin: 0;
-  padding-left: 1.2rem;
+  padding-left: 0;
+  list-style: none;
 
   li {
+    position: relative;
     margin-bottom: 1rem;
+    padding: .9rem .9rem .85rem 3.2rem;
+    background: rgba($c-white, .02);
+    border: 1px solid rgba($c-white, .08);
+    border-radius: 12px;
   }
 
   h3 {
@@ -691,6 +788,30 @@ $c-mkt-glow:   rgba(255, 107, 43, .15);
     color: $c-gray;
     margin: 0;
   }
+}
+
+.service-step-num {
+  position: absolute;
+  top: .8rem;
+  left: .8rem;
+  width: 1.7rem;
+  height: 1.7rem;
+  border-radius: 999px;
+  background: rgba($c-blue, .15);
+  border: 1px solid rgba($c-blue, .35);
+  color: $c-blue-lt;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .8rem;
+  font-family: $font-mono;
+  font-weight: 700;
+}
+
+.service-detail-content-mkt .service-step-num {
+  background: rgba($c-mkt, .13);
+  border-color: rgba($c-mkt, .35);
+  color: #ffad42;
 }
 
 .service-detail-body {
@@ -1230,6 +1351,12 @@ body.theme-light {
   background-color: #f4f7fc;
   color: #0f172a;
 
+  &[data-page-layout='service'] #mainNav {
+    background: rgba(255, 255, 255, .94);
+    border-bottom: 1px solid #d6dfec;
+    box-shadow: 0 8px 25px rgba(15, 23, 42, .08);
+  }
+
   .gradient-text {
     background: linear-gradient(135deg, #0052cc, #0078ff);
     -webkit-background-clip: text;
@@ -1299,6 +1426,10 @@ body.theme-light {
   .about-text,
   .service-desc,
   .port-desc,
+  .service-detail-summary,
+  .service-detail-list li,
+  .service-process-list p,
+  .service-detail-cta p,
   .contact-label,
   .footer-tagline,
   .footer-copy,
@@ -1322,11 +1453,73 @@ body.theme-light {
   .stat-card,
   .port-card,
   .port-card-sm,
+  .service-detail-card,
+  .service-detail-cta,
   .code-window,
   .contact-form .form-control {
     background: #ffffff;
     border-color: #d6dfec;
     color: #0f172a;
+  }
+
+  .service-detail-hero { background-color: #f4f7fc; }
+
+  .service-detail-grid {
+    background-image:
+      linear-gradient(rgba(#0052cc, .05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(#0052cc, .05) 1px, transparent 1px);
+  }
+
+  .service-detail-glow-1 { background: rgba(#3b82f6, .18); }
+  .service-detail-glow-2 { background: rgba(#38bdf8, .12); }
+
+  .service-detail-title,
+  .service-detail-h2,
+  .service-process-list h3,
+  .service-detail-cta h3,
+  .service-detail-body h2,
+  .service-detail-body h3,
+  .service-detail-body h4 {
+    color: #0f172a;
+  }
+
+  .service-process-list li {
+    background: rgba(15, 23, 42, .03);
+    border-color: #d6dfec;
+  }
+
+  .service-detail-chip {
+    color: #0052cc;
+    background: rgba(#0052cc, .08);
+    border-color: rgba(#0052cc, .2);
+  }
+
+  .service-detail-icon {
+    background: rgba(#0052cc, .08);
+    border-color: rgba(#0052cc, .22);
+    color: #0052cc;
+  }
+
+  .service-detail-hero-mkt .service-detail-icon {
+    background: rgba(#ff6b2b, .1);
+    border-color: rgba(#ff6b2b, .3);
+    color: #e05520;
+  }
+
+  .service-step-num {
+    background: rgba(#0052cc, .08);
+    border-color: rgba(#0052cc, .25);
+    color: #0052cc;
+  }
+
+  .service-detail-content-mkt .service-step-num {
+    background: rgba(#ff6b2b, .1);
+    border-color: rgba(#ff6b2b, .28);
+    color: #e05520;
+  }
+
+  .service-detail-media {
+    border-color: #d6dfec;
   }
 
   .code-window .code-pre {
@@ -1488,7 +1681,7 @@ body.theme-light {
   .portfolio-section,
   .contact-section { padding: $section-y-sm 0; }
 
-  .service-detail-hero { padding: 120px 0 38px; }
+  .service-detail-hero { padding: 132px 0 38px; }
   .service-detail-content { padding: 1.8rem 0 3.5rem; }
   .service-detail-card,
   .service-detail-cta { padding: 1.2rem; }
