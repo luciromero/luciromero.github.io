@@ -233,6 +233,64 @@ permalink: /admin/presupuesto/
     padding: 0.55rem 0.75rem;
   }
 
+  /* Compactación extrema para PDF 1 página */
+  .pdf-single-compact {
+    max-width: 820px !important;
+    padding: 0 !important;
+    font-size: 11px !important;
+  }
+  .pdf-single-compact .header { margin-bottom: 0.45rem; padding-bottom: 0.4rem; }
+  .pdf-single-compact .brand-name { font-size: 15px; }
+  .pdf-single-compact .doc-title { font-size: 18px; }
+  .pdf-single-compact .doc-num,
+  .pdf-single-compact .brand-tag,
+  .pdf-single-compact .badge-available,
+  .pdf-single-compact .party-detail,
+  .pdf-single-compact .item-desc,
+  .pdf-single-compact .notes-area,
+  .pdf-single-compact .term-val,
+  .pdf-single-compact .sig-name,
+  .pdf-single-compact .footer-left,
+  .pdf-single-compact .footer-right {
+    font-size: 10px;
+    line-height: 1.35;
+  }
+  .pdf-single-compact .parties,
+  .pdf-single-compact .dates-row,
+  .pdf-single-compact .terms-grid,
+  .pdf-single-compact .sig-row {
+    gap: 0.45rem;
+    margin-bottom: 0.45rem;
+  }
+  .pdf-single-compact .party-card,
+  .pdf-single-compact .date-card,
+  .pdf-single-compact .term-item,
+  .pdf-single-compact .notes-area {
+    padding: 0.42rem 0.52rem;
+  }
+  .pdf-single-compact .section-title {
+    margin-top: 0.5rem;
+    margin-bottom: 0.35rem;
+    font-size: 10px;
+  }
+  .pdf-single-compact .items-table thead th,
+  .pdf-single-compact .items-table tbody td {
+    padding: 0.26rem 0.34rem;
+    font-size: 10px;
+  }
+  .pdf-single-compact .item-name,
+  .pdf-single-compact .item-price {
+    font-size: 11px;
+  }
+  .pdf-single-compact .totals-block { margin-bottom: 0.45rem !important; }
+  .pdf-single-compact .total-row,
+  .pdf-single-compact .totals-header {
+    padding: 0.28rem 0.5rem;
+    font-size: 10px;
+  }
+  .pdf-single-compact .total-final .total-val { font-size: 11px; }
+  .pdf-single-compact .footer { margin-top: 0.35rem; padding-top: 0.35rem; }
+
   @media (max-width: 900px) {
     .header, .parties, .dates-row, .terms-grid, .sig-row { grid-template-columns: 1fr; display: grid; }
     .header { display: block; }
@@ -839,49 +897,16 @@ permalink: /admin/presupuesto/
       el.removeAttribute('contenteditable');
     });
 
-    const allSectionTitles = Array.from(clone.querySelectorAll('.section-title'));
-    const servicesTitle = allSectionTitles.find(function (el) {
-      return el.textContent.trim().toLowerCase().includes('mis servicios');
-    });
-    const adsTitle = clone.querySelector('.section-title.ads');
-    const notesTitle = allSectionTitles.find(function (el) {
-      return el.textContent.trim().toLowerCase().includes('notas');
-    });
+    clone.classList.add('pdf-single-compact');
+    clone.style.cssText = 'max-width:820px;margin:0;padding:0;background:#fff;color:#1f2328;';
 
     const pdfRoot = document.createElement('div');
     pdfRoot.className = 'pdf-export-pages';
-
-    function createPage(pageClass) {
-      const page = document.createElement('section');
-      page.className = 'pdf-export-page ' + (pageClass || '');
-      pdfRoot.appendChild(page);
-      return page;
-    }
-
-    function appendNodesBetween(startNode, endNode, targetPage) {
-      if (!startNode || !targetPage) return;
-      let current = startNode;
-      while (current && current !== endNode) {
-        const next = current.nextElementSibling;
-        targetPage.appendChild(current);
-        current = next;
-      }
-    }
-
-    const coverPage = createPage('pdf-export-cover');
-    ['.header', '.parties', '.dates-row'].forEach(function (selector) {
-      const el = clone.querySelector(selector);
-      if (el) coverPage.appendChild(el);
-    });
-
-    const servicesPage = createPage('pdf-export-services');
-    appendNodesBetween(servicesTitle, adsTitle, servicesPage);
-
-    const adsPage = createPage('pdf-export-ads');
-    appendNodesBetween(adsTitle, notesTitle, adsPage);
-
-    const closingPage = createPage('pdf-export-closing');
-    appendNodesBetween(notesTitle, null, closingPage);
+    const onePage = document.createElement('section');
+    onePage.className = 'pdf-export-page';
+    onePage.style.padding = '12px';
+    onePage.appendChild(clone);
+    pdfRoot.appendChild(onePage);
 
     document.body.classList.add('exporting-pdf');
     document.body.appendChild(pdfRoot);
@@ -896,32 +921,25 @@ permalink: /admin/presupuesto/
       const maxW = pageW - margin * 2;
       const maxH = pageH - margin * 2;
 
-      const pages = Array.from(pdfRoot.querySelectorAll('.pdf-export-page'));
-      for (let i = 0; i < pages.length; i += 1) {
-        const pageEl = pages[i];
-        if (!pageEl || !pageEl.children.length) continue;
+      const canvas = await window.html2canvas(onePage, {
+        scale: 2,
+        useCORS: true,
+        backgroundColor: '#ffffff',
+        windowWidth: 860,
+        scrollX: 0,
+        scrollY: 0,
+        logging: false,
+      });
 
-        const canvas = await window.html2canvas(pageEl, {
-          scale: 2,
-          useCORS: true,
-          backgroundColor: '#ffffff',
-          windowWidth: 900,
-          scrollX: 0,
-          scrollY: 0,
-          logging: false,
-        });
+      const imgW = canvas.width;
+      const imgH = canvas.height;
+      const ratio = Math.min(maxW / imgW, maxH / imgH);
+      const renderW = imgW * ratio;
+      const renderH = imgH * ratio;
+      const x = (pageW - renderW) / 2;
+      const y = (pageH - renderH) / 2;
 
-        const imgW = canvas.width;
-        const imgH = canvas.height;
-        const ratio = Math.min(maxW / imgW, maxH / imgH);
-        const renderW = imgW * ratio;
-        const renderH = imgH * ratio;
-        const x = (pageW - renderW) / 2;
-        const y = margin;
-
-        if (i > 0) pdf.addPage();
-        pdf.addImage(canvas.toDataURL('image/jpeg', 0.98), 'JPEG', x, y, renderW, renderH, undefined, 'FAST');
-      }
+      pdf.addImage(canvas.toDataURL('image/jpeg', 0.98), 'JPEG', x, y, renderW, renderH, undefined, 'FAST');
 
       pdf.save(fileName);
     } finally {
